@@ -1,0 +1,22 @@
+button {
+	width: 165px;
+	height: 40px;
+	color: $color-white;
+	background-color: $color-dodgerblue;
+	border: 0;
+	border-radius: 1px;
+	font-family: $title-font;
+	font-size: em(14px);
+	font-weight: 400;
+	line-height: 40px;
+	text-transform: uppercase;
+	-webkit-transition: all 175ms ease;
+	-moz-transition: all 175ms ease;
+	-ms-transition: all 175ms ease;
+	-o-transition: all 175ms ease;
+	transition: all 175ms ease;
+
+	&:hover {
+		background-color: #39a4ff;
+	}
+}
