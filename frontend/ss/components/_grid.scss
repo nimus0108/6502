@@ -1,0 +1,12 @@
+@import "grid/_grid-settings";
+@import "grid/neat";
+
+.container {
+	width: 860px;	
+	@include outer-container(90%);
+	@include margin(0 auto);
+}
+
+.row {
+	@include row();
+}

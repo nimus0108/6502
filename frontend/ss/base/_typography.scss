@@ -1,0 +1,53 @@
+// Typography
+@import url(https://fonts.googleapis.com/css?family=Open+Sans:300,400,400italic|Raleway:400,300);
+
+html {
+  font-size: 62.5%;
+  @media screen and (min-width: $bp-sm) { font-size: 65%; }
+  @media screen and (min-width: $bp-md) { font-size: 70%; }
+  @media screen and (min-width: $bp-lg) { font-size: 80; }
+  @media screen and (min-width: $bp-xl) { font-size: 92.5%; }
+}
+
+body {
+  color: $color-black;
+  font-family: $body-font;
+  font-size: 1.25em;
+  font-weight: 300;
+  line-height: $body-lh;
+  
+}
+
+@each $fs in $font-sizes {
+	$i: index($fs, $font-sizes);
+	h#{$i} {
+		font-size: em($fs);
+	}
+}
+
+h1, h2, h3, h4, h5, h6 {
+	font-family: $body-font;
+	font-weight: 300;
+	line-height: $body-lh;
+	margin: 0 0 $sm-spacing;
+	padding: 0;
+}
+
+p {
+  font-family: $body-font;
+  font-size: em(18px);
+  font-weight: 400;
+  line-height: 1.8;
+}
+
+a {
+  color: $color-dodgerblue;
+  text-decoration: none;
+  transition: color $animation-duration $animation-timing;
+
+  &:active,
+  &:focus,
+  &:hover {
+    opacity: 0.8;
+  }
+}
