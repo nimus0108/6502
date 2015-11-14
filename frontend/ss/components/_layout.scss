@@ -1,0 +1,30 @@
+/* Layout.scss */
+
+div.full-container {
+	@include full-screen;
+}
+
+section.folder {
+	background: $color-capecod;
+	@include span-columns(3);
+}
+
+section.code {
+	background: $color-outerspace;
+	@include span-columns(6);
+
+	-webkit-box-shadow: inset 5px 0px 10px 0px rgba(0,0,0,0.33), inset -5px 0px 10px 0px rgba(0,0,0,0.33);
+	-moz-box-shadow: inset 5px 0px 10px 0px rgba(0,0,0,0.33), inset -5px 0px 10px 0px rgba(0,0,0,0.33);
+	box-shadow: inset 5px 0px 10px 0px rgba(0,0,0,0.33), inset -5px 0px 10px 0px rgba(0,0,0,0.33);
+}
+
+section.display {
+	background: $color-space;
+	@include span-columns(5);
+}
+
+section.panel {
+	height: 100%;
+	margin: 0;
+	padding: 0;
+}

@@ -1,0 +1,14 @@
+/* Code Panel */
+section.code {
+	nav.tabs {
+		ul.tab-list {
+			list-style: none;
+		}
+
+		li.tab {
+			min-width: 20%;
+			width: 300px;
+			max-width: 450px;
+		}
+	}
+}
