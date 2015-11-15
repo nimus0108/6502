@@ -222,7 +222,7 @@ button, .button, .monitorControls input, .debugger input[type="button"], .button
   padding: 12px 12px;
   background: rgba(255, 255, 255, 0.1);
   color: #fdfdfd;
-  font-family: "Proxima Nova", "Open Sans", sans-serif;
+  font-family: "Source Code Pro", "Consolas", sans-serif;
   font-weight: 300;
   border: none;
   border-radius: 0px;
@@ -309,7 +309,7 @@ section.code div.file-title {
   background: rgba(255, 255, 255, 0.15); }
   section.code div.file-title .file-name {
     color: #eee;
-    font-family: "Proxima Nova", "Open Sans", sans-serif;
+    font-family: "Source Code Pro", "Consolas", sans-serif;
     font-weight: 300;
     font-size: 1em;
     text-align: center;
@@ -393,7 +393,7 @@ section.folder {
       font-size: 1.5em;
       margin: 0 30px;
       line-height: 75px;
-      font-family: "Proxima Nova", "Open Sans", sans-serif;
+      font-family: "Source Code Pro", "Consolas", sans-serif;
       font-weight: 300; }
   section.folder div.files {
     width: 100%;
@@ -403,7 +403,7 @@ section.folder {
     section.folder div.files h2.file-header {
       font-size: 1.125em;
       margin-left: 30px;
-      font-family: "Proxima Nova", "Open Sans", sans-serif;
+      font-family: "Source Code Pro", "Consolas", sans-serif;
       font-weight: 300; }
     section.folder div.files ul.your-files {
       list-style: none;
@@ -413,7 +413,7 @@ section.folder {
         font-size: 1em;
         line-height: 2.5;
         padding: 0 30px;
-        font-family: "Proxima Nova", "Open Sans", sans-serif;
+        font-family: "Source Code Pro", "Consolas", sans-serif;
         font-weight: 300; }
         section.folder div.files ul.your-files li.file a {
           color: #fdfdfd;
