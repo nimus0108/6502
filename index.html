@@ -23,6 +23,21 @@
 
 	<script>
 		$(document).ready(function () {
+            
+            
+            function storageAvailable(type) {
+	try {
+		var storage = window[type],
+			x = '__storage_test__';
+		storage.setItem(x, x);
+		storage.removeItem(x);
+		return true;
+	}
+	catch(e) {
+		return false;
+	}
+}
+
 			
 			var client = new WindowsAzure.MobileServiceClient(
     "https://ide6502.azure-mobile.net/",
@@ -34,8 +49,13 @@
     $("#logged-out").toggle(!isLoggedIn);
 
     if (isLoggedIn) {
-        console.log("http://6502.azurewebsites.net/frontend/index?id=" + client.currentUser.userId.replace("Google:",""));
-        window.location.replace = ("http://6502.azurewebsites.net/frontend/index.html?id=" + client.currentUser.userId.replace("Google",""));
+        if (storageAvailable('localStorage')) {
+	       localStorage.setItem('id', client.currentUser.clientId.replace("Google:",""));
+        }
+        else {
+            $("#login-name").text("UPGRADE TO HTML5");
+        }
+        window.location.replace = ("http://6502.azurewebsites.net/frontend/index.html);
     }
 }
 
