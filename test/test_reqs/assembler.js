@@ -2651,6 +2651,39 @@ function SimulatorWidget(node) {
       openPopup(html, 'Disassembly');
     }
     
+    function customDisassemble() {
+      var startAddress = 0x600;
+      var currentAddress = startAddress;
+      var endAddress = startAddress + codeLen;
+      var instructions = [];
+      var length;
+      var inst;
+      var byte;
+      var modeAndCode;
+
+      while (currentAddress < endAddress) {
+        inst = createInstruction(currentAddress);
+        byte = memory.get(currentAddress);
+        inst.addByte(byte);
+
+        modeAndCode = getModeAndCode(byte);
+        length = instructionLength[modeAndCode.mode];
+        inst.setModeAndCode(modeAndCode);
+
+        for (var i = 1; i < length; i++) {
+          currentAddress++;
+          byte = memory.get(currentAddress);
+          inst.addByte(byte);
+          inst.addArg(byte);
+        }
+        instructions.push(inst);
+        currentAddress++;
+      }
+      var html = "";
+      html += instructions.join('\n');
+      return(html);
+    }
+    
     function getCodeLen() {
       return codeLen;
     }
@@ -2663,6 +2696,7 @@ function SimulatorWidget(node) {
       },
       hexdump: hexdump,
       disassemble: disassemble,
+      customDisassemble, customDisassemble,
       getCodeLen: getCodeLen
     };
   }
@@ -2717,7 +2751,8 @@ function SimulatorWidget(node) {
           console.log(dump)
       }
       function displayDisassembleButton(){
-          
+          var disassembled = assembler.customDisassemble();
+          console.log(disassembled)
       }
     return {
       displayStackButton: displayStackButton,
