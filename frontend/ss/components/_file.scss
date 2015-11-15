@@ -1,11 +1,66 @@
 /* File System */
 
 section.folder {
+	color: $color-white;
+
 	div.header {
 		width: 100%;
 		height: 75px;
 		margin: 0;
 		padding: 0;
 		background: rgba(255, 255, 255, 0.15);
+
+		h1.title {
+			font-size: em(24px);
+			margin: 0 30px;
+			line-height: 75px;
+		}
+	}
+
+	div.files {
+		width: 100%;
+		height: calc(100% - 75px);
+		margin: 0;
+		padding: 20px 0;
+
+		h2.file-header {
+			font-size: em(18px);
+			margin-left: 30px;
+		}
+
+		ul.your-files {
+			list-style: none;
+			margin: 0;
+			padding: 0;
+
+			li.file {
+				font-size: em(16px);
+				line-height: 2.5;
+				padding: 0 30px;
+
+				a {
+					color: $color-white;
+					text-decoration: none;
+				}
+
+				img.icon {
+					width: 20px;
+					margin-right: 7px;
+					vertical-align: middle;
+				}
+
+				img.delete {
+					position: relative;
+					top: 17px;
+					width: 15px;
+					height: 15px;
+					float: right;
+				}
+
+				&.active {
+					background: $color-java;
+				}
+			}
+		}
 	}
 }
