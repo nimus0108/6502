@@ -211,24 +211,22 @@
 
 							<div class="monitorControls">
 								<label for="length">Length of Stack</label>
-								<input type="text" value="$20" class="length" name="length" />
+								<input type="text" value="$20" class="length" name="length">
 							</div>
-
 						</div>
-					</div>
+						<!--- halves close -->
 
+					</div>
+						<div class="buttons action-button-container">
+							<input class="button-offset"></input>
+							<!-- <input type="button" value="Stack" class="displayStackButton"> <!-- Print stack to Console --> 
+							<input type="button" value="Hexdump" class="displayHexdumpButton"> <!-- Print hexdump to Console -->
+							<!-- <input type="button" value="Registers" class="displayRegistersButton"> <!-- Print registers to Console --> 
+							<input type="button" value="Disassemble" class="displayDisassembleButton"> <!-- Print diassembled program to console -->
+		                </div>
 
                   <div class="monitor"><pre><code></code></pre></div>
                   <div class="messages"><pre><code></code></pre></div>
-
-                  
-    
-                <div class="buttons">
-                  <input type="button" value="Stack" class="displayStackButton"> <!-- Print stack to Console -->
-                  <input type="button" value="Registers" class="displayRegistersButton"> <!-- Print registers to Console -->
-                  <input type="button" value="Hexdump" class="displayHexdumpButton"> <!-- Print hexdump to Console -->
-                  <input type="button" value="Disassemble" class="displayDisassembleButton"> <!-- Print diassembled program to console -->
-                </div>
             </div>
 		</section>
 		<script type="text/javascript" src="js/jquery.min.js"></script>

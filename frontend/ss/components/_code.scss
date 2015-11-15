@@ -43,6 +43,10 @@ section.code {
 		height: calc(100% - 75px) !important;
 		overflow-y: scroll;
 
+		-webkit-box-shadow: inset 5px 0px 10px 0px rgba(0,0,0,0.33), inset -5px 0px 10px 0px rgba(0,0,0,0.33);
+		-moz-box-shadow: inset 5px 0px 10px 0px rgba(0,0,0,0.33), inset -5px 0px 10px 0px rgba(0,0,0,0.33);
+		box-shadow: inset 5px 0px 10px 0px rgba(0,0,0,0.33), inset -5px 0px 10px 0px rgba(0,0,0,0.33);
+
 		ul.line-container {
 			@include span-columns(1);
 			min-height: calc(100% - 75px);

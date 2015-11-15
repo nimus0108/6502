@@ -92,15 +92,8 @@ canvas.screen {
 	text-align: center;
 
 	input {
+		@extend .button;
 		width: 100%;
-		height: 50px;
-		margin: 10px auto 0;
-		padding: 12px 12px;
-		background: rgba(255, 255, 255, 0.10);
-		border: none;
-		border-radius: 0px;
-		outline: none;
-		text-align: center;
 	}
 }
 
@@ -132,15 +125,41 @@ canvas.screen {
 	}
 
 	input[type="button"] {
+		@extend .button;
 		display: inline-block;
 		width: calc(50% - 6px);
-		height: 50px;
-		margin: 10px 0;
-		padding: 12px 12px;
-		background: rgba(255, 255, 255, 0.10);	
-		border: none;
-		border-radius: 0px;
-		outline: none;
-		text-align: center;
 	}
 }
+
+$grid-columns: 12;
+.buttons {
+	input {
+		@extend .button;
+		@include span-columns(4);
+		margin: 0;
+	}
+}
+
+.action-button-container {
+	position: relative;
+	top: 40px;
+	width: 100%;
+	margin: auto;
+	
+	.button-offset {
+		@include span-columns(3);
+		opacity: 0;
+		cursor: default;
+	}
+
+	input {
+		@extend .button;
+		@include span-columns(3);
+		margin: 0 auto;
+
+		&:nth-child(3) {
+			border-left: 1px solid $color-space;
+		}
+	}
+}
+$grid-columns: 14;

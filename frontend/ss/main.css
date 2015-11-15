@@ -215,25 +215,24 @@ a {
   a:active, a:focus, a:hover {
     opacity: 0.8; }
 
-button {
-  width: 165px;
-  height: 40px;
+button, .button, .monitorControls input, .debugger input[type="button"], .buttons input, .action-button-container input {
+  width: 250px;
+  height: 50px;
+  margin: 10px auto 0;
+  padding: 12px 12px;
+  background: rgba(255, 255, 255, 0.1);
   color: #fdfdfd;
-  background-color: #20b4d0;
-  border: 0;
-  border-radius: 1px;
-  font-family: "Proxima Nova", "Open Sans", sans-serif;
-  font-size: 0.875em;
-  font-weight: 400;
-  line-height: 40px;
-  text-transform: uppercase;
+  border: none;
+  border-radius: 0px;
+  outline: none;
+  text-align: center;
   -webkit-transition: all 175ms ease;
   -moz-transition: all 175ms ease;
   -ms-transition: all 175ms ease;
   -o-transition: all 175ms ease;
   transition: all 175ms ease; }
-  button:hover {
-    background-color: #39a4ff; }
+  button:hover, .button:hover, .monitorControls input:hover, .debugger input[type="button"]:hover, .buttons input:hover, .action-button-container input:hover {
+    background: rgba(255, 255, 255, 0.2); }
 
 html {
   box-sizing: border-box; }
@@ -281,10 +280,7 @@ section.code {
   float: left;
   display: block;
   margin-right: 0%;
-  width: 42.85714%;
-  -webkit-box-shadow: inset 5px 0px 10px 0px rgba(0, 0, 0, 0.33), inset -5px 0px 10px 0px rgba(0, 0, 0, 0.33);
-  -moz-box-shadow: inset 5px 0px 10px 0px rgba(0, 0, 0, 0.33), inset -5px 0px 10px 0px rgba(0, 0, 0, 0.33);
-  box-shadow: inset 5px 0px 10px 0px rgba(0, 0, 0, 0.33), inset -5px 0px 10px 0px rgba(0, 0, 0, 0.33); }
+  width: 42.85714%; }
   section.code:last-child {
     margin-right: 0; }
 
@@ -332,7 +328,10 @@ section.code .CodeMirror-cursors {
 section.code div.code-data {
   width: 100%;
   height: calc(100% - 75px) !important;
-  overflow-y: scroll; }
+  overflow-y: scroll;
+  -webkit-box-shadow: inset 5px 0px 10px 0px rgba(0, 0, 0, 0.33), inset -5px 0px 10px 0px rgba(0, 0, 0, 0.33);
+  -moz-box-shadow: inset 5px 0px 10px 0px rgba(0, 0, 0, 0.33), inset -5px 0px 10px 0px rgba(0, 0, 0, 0.33);
+  box-shadow: inset 5px 0px 10px 0px rgba(0, 0, 0, 0.33), inset -5px 0px 10px 0px rgba(0, 0, 0, 0.33); }
   section.code div.code-data ul.line-container {
     float: left;
     display: block;
@@ -476,15 +475,7 @@ canvas.screen {
   color: #fdfdfd;
   text-align: center; }
   .monitorControls input {
-    width: 100%;
-    height: 50px;
-    margin: 10px auto 0;
-    padding: 12px 12px;
-    background: rgba(255, 255, 255, 0.1);
-    border: none;
-    border-radius: 0px;
-    outline: none;
-    text-align: center; }
+    width: 100%; }
 
 .debugger {
   min-width: 250px;
@@ -506,23 +497,48 @@ canvas.screen {
     float: right; }
   .debugger input[type="button"] {
     display: inline-block;
-    width: calc(50% - 6px);
-    height: 50px;
-    margin: 10px 0;
-    padding: 12px 12px;
-    background: rgba(255, 255, 255, 0.1);
-    border: none;
-    border-radius: 0px;
-    outline: none;
-    text-align: center; }
+    width: calc(50% - 6px); }
+
+.buttons input {
+  float: left;
+  display: block;
+  margin-right: 0%;
+  width: 33.33333%;
+  margin: 0; }
+  .buttons input:last-child {
+    margin-right: 0; }
+
+.action-button-container {
+  position: relative;
+  top: 40px;
+  width: 100%;
+  margin: auto; }
+  .action-button-container .button-offset {
+    float: left;
+    display: block;
+    margin-right: 0%;
+    width: 25%;
+    opacity: 0;
+    cursor: default; }
+    .action-button-container .button-offset:last-child {
+      margin-right: 0; }
+  .action-button-container input {
+    float: left;
+    display: block;
+    margin-right: 0%;
+    width: 25%;
+    margin: 0 auto; }
+    .action-button-container input:last-child {
+      margin-right: 0; }
+    .action-button-container input:nth-child(3) {
+      border-left: 1px solid #3e4649; }
 
 /* Scrollbar */
 ::-webkit-scrollbar {
-  width: 12px;
-  margin-right: 10px; }
+  width: 15px; }
 
-::-webkit-scrollbar-track {
-  background: #3e4649; }
+.code::-webkit-scrollbar-track {
+  background: none; }
 
 ::-webkit-scrollbar-thumb {
   background: #596466; }

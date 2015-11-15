@@ -12,10 +12,6 @@ section.folder {
 section.code {
 	background: $color-outerspace;
 	@include span-columns(6);
-
-	-webkit-box-shadow: inset 5px 0px 10px 0px rgba(0,0,0,0.33), inset -5px 0px 10px 0px rgba(0,0,0,0.33);
-	-moz-box-shadow: inset 5px 0px 10px 0px rgba(0,0,0,0.33), inset -5px 0px 10px 0px rgba(0,0,0,0.33);
-	box-shadow: inset 5px 0px 10px 0px rgba(0,0,0,0.33), inset -5px 0px 10px 0px rgba(0,0,0,0.33);
 }
 
 section.display {
