@@ -319,6 +319,18 @@ function SimulatorWidget(node) {
     function getY(){
         return regY;
     }
+      
+    function getA(){
+        return regA;
+    }
+      
+    function getSP(){
+        return regSP;
+    }
+      
+    function getPC(){
+        return regPC;
+    }
 
     // Set zero and negative processor flags based on result
     function setNVflags(value) {
@@ -1725,7 +1737,10 @@ function SimulatorWidget(node) {
       toggleMonitor: toggleMonitor,
       handleMonitorRangeChange: handleMonitorRangeChange,
       getX: getX,
-      getY: getY
+      getY: getY,
+      getA: getA,
+      getSP: getSP,
+      getPC: getPC
     };
   }
 
@@ -2682,7 +2697,13 @@ function SimulatorWidget(node) {
         }
       }
       function displayRegistersButton(){
-          console.log(simulator.getX());
+          var x = simulator.getX();
+          var y = simulator.getY();
+          var a = simulator.getA();
+          var sp = simulator.getSP();
+          var pc = simulator.getPC();
+          
+          console.log(x);
       }
       function displayHexdumpButton(){
           
