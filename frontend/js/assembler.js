@@ -2769,11 +2769,18 @@ function SimulatorWidget(node) {
       }
       function displayHexdumpButton(){
           var dump = memory.format(0x600, assembler.getCodeLen());
-          ("<div>"+dump+"</div>").insertBefore("#closeConsoleButton");
+          $(".disassembly").remove();
+          $("<div class=\"dump\">"+dump+"</div>").insertBefore("#closeConsoleButton");
       }
       function displayDisassembleButton(){
           var disassembled = assembler.customDisassemble();
-          $("<div>"+disassembled+"</div>").insertBefore("#closeConsoleButton");
+          disassembled = disassembled.split("\n");
+          $(".dump").remove();
+          console.log(disassembled)
+          $("<div class=\"disassembly\"></div>").insertBefore("#closeConsoleButton");
+          for(var i =0; i < disassembled.length; i++) {  
+            $(".disassembly").append("<p style=\"margin:0; padding:0;\">" + disassembled[i] + "</p>");
+           }
       }
     return {
       displayStackButton: displayStackButton,
