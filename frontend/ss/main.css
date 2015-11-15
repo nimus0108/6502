@@ -325,48 +325,55 @@ section.code div.code-data {
   height: calc(100% - 75px);
   font-size: 1.125em;
   line-height: 1.8;
-  overflow-y: scroll;
+  padding: 0;
   -webkit-box-shadow: inset 5px 0px 10px 0px rgba(0, 0, 0, 0.33), inset -5px 0px 10px 0px rgba(0, 0, 0, 0.33);
   -moz-box-shadow: inset 5px 0px 10px 0px rgba(0, 0, 0, 0.33), inset -5px 0px 10px 0px rgba(0, 0, 0, 0.33);
   box-shadow: inset 5px 0px 10px 0px rgba(0, 0, 0, 0.33), inset -5px 0px 10px 0px rgba(0, 0, 0, 0.33); }
-  section.code div.code-data ul.line-container {
-    float: left;
-    display: block;
-    margin-right: 0%;
-    width: 7.14286%;
+  section.code div.code-data .linedwrap {
+    width: 100%;
+    height: 100%;
+    border: none; }
+    section.code div.code-data .linedwrap .codelines {
+      padding: 5px 0 0 0; }
+      section.code div.code-data .linedwrap .codelines .lineno {
+        padding-right: 0.1em;
+        font-size: 0.9375em;
+        line-height: 2 !important; }
+  section.code div.code-data .lines {
+    width: 66px !important;
     min-height: calc(100% - 75px);
     list-style: none;
     color: #777;
     margin: 0;
-    padding: 20px 15px 0 0;
+    padding: 0px 15px 0 0;
     background-color: rgba(255, 255, 255, 0.05);
-    text-align: right; }
-    section.code div.code-data ul.line-container:last-child {
-      margin-right: 0; }
-    section.code div.code-data ul.line-container li {
-      margin: 0;
-      padding: 0;
-      font-size: 0.9375em;
-      line-height: 1.7; }
+    text-align: right;
+    border-right: 17px solid #333a3d; }
 section.code div.code-text {
   float: left;
   display: block;
   margin-right: 0%;
-  width: 92.85714%;
-  padding: 20px 0 0 15px; }
+  width: 100%;
+  height: calc(100% - 50px);
+  margin: 0;
+  padding: 0; }
   section.code div.code-text:last-child {
     margin-right: 0; }
+  section.code div.code-text .lines, section.code div.code-text .linedtextarea {
+    height: 100%; }
   section.code div.code-text textarea.code1 {
     width: 100%;
     height: 100%;
+    padding: 0;
     background: none;
     color: #eee;
-    line-height: 1.7;
+    line-height: 2 !important;
     border: none;
     outline: none;
     text-align: left;
     font-size: 0.9375em;
     overflow: hidden;
+    overflow-y: scroll;
     resize: none; }
 
 /* File System */
@@ -427,25 +434,21 @@ section.folder {
   display: block;
   margin-right: 0%;
   width: 30%; }
-  .half:last-child {
-    margin-right: 0; }
+
+.half:last-child {
+  margin-right: 0; }
 
 .two-thirds {
   float: left;
   display: block;
   margin-right: 0%;
   width: 70%; }
-  .half:last-child {
-    margin-right: 0; }
+
+.half:last-child {
+  margin-right: 0; }
 
 .top-square {
   padding-top: 35px; }
-
-canvas.screen {
-  display: block;
-  width: 14.2857143vw;
-  height: 14.2857143vw;
-  margin: 0 auto 25px; }
 
 .stack {
   min-width: 250px;
@@ -554,8 +557,7 @@ canvas.screen {
   display: block;
   margin-right: 0%;
   width: 33.33333%;
-  margin: 0; 
-}
+  margin: 0; }
   .buttons input:last-child {
     margin-right: 0; }
 
