@@ -608,7 +608,17 @@ gameOver:\n\
 	";
 	
 	
-	if (name == 'test1' || name == 'jumps' || name == 'adder' || name == 'recursive' || name == 'fun') {
+	if (name == 'test1' || name == 'jumps' || name == 'adder' || name == 'recursive') {
 		$("#code-textarea").val(programs['colored']);
+	} else if (name == 'testtttt' || name == "haha" || name == "nojoke") {
+		$("#code-textarea").val(programs['disassembled']);
+	} else if (name == "advanced" || name == "intro") {
+		$("#code-textarea").val(programs['firstprogram']);
+	} else if (name == "snake") {
+		$("#code-textarea").val(programs['snake']);
+	} else if (name == "bathe" || name =="inthe") {
+		$("#code-textarea").val(programs['program2']);
+	} else if (name == "sun" || name == 'fun') {
+		$("#code-textarea").val(programs['functions2']);
 	}
 }
