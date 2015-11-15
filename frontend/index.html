@@ -28,56 +28,44 @@
 	</head>
 	<body>
 		<div class="full-container widget">
-			<section class="folder panel" style="display:none">
-				<div class="header">
-					<h1 class="title">6502 IDE</h1>
-				</div>
-				<div class="files">
-					<h2 class="file-header">YOUR FILES</h2>
-					<ul class="your-files">
-						<li class="file"><a href="#"><img class="icon" src="images/icons/code.png"></img> jaymo</a></li>
-						<li class="file"><a href="#"><img class="icon" src="images/icons/code.png"></img> su min</a></li>
-						<li class="file"><a href="#"><img class="icon" src="images/icons/code.png"></img> liam</a></li>
-						<li class="file"><a href="#"><img class="icon" src="images/icons/code.png"></img> sarah</a></li>
-						<li class="file"><a href="#"><img class="icon" src="images/icons/code.png"></img> jeremy</a></li>
-						<li class="file active">
-							<a href="#">
-								<img class="icon" src="images/icons/code.png"></img> microsoft
-							</a>
-							<img class="icon delete" src="images/icons/delete.png">
-						</li>
-						<li class="file"><a href="#"><img class="icon" src="images/icons/code.png"></img> welove</a></li>
-						<li class="file"><a href="#"><img class="icon" src="images/icons/code.png"></img> youfrom</a></li>
-						<li class="file"><a href="#"><img class="icon" src="images/icons/code.png"></img> ourhearts</a></li>
-						<li class="file"><a href="#"><img class="icon" src="images/icons/code.png"></img> reallyreally</a></li>
-						<li class="file"><a href="#"><img class="icon" src="images/icons/code.png"></img> nojoke</a></li>
-					</ul>
-				</div>
-			</section>
 			<section class="folder panel">
 				<div class="header">
 					<h1 class="title">6502 IDE</h1>
 				</div>
 				<div class="files">
 					<h2 class="file-header">YOUR FILES</h2>
-					<ul class="your-files">
-						<li class="file"><a href="#"><img class="icon" src="images/icons/code.png"></img> jaymo</a></li>
-						<li class="file"><a href="#"><img class="icon" src="images/icons/code.png"></img> su min</a></li>
-						<li class="file"><a href="#"><img class="icon" src="images/icons/code.png"></img> liam</a></li>
-						<li class="file"><a href="#"><img class="icon" src="images/icons/code.png"></img> sarah</a></li>
-						<li class="file"><a href="#"><img class="icon" src="images/icons/code.png"></img> jeremy</a></li>
-						<li class="file active">
-							<a href="#">
-								<img class="icon" src="images/icons/code.png"></img> microsoft
-							</a>
-							<img class="icon delete" src="images/icons/delete.png">
-						</li>
-						<li class="file"><a href="#"><img class="icon" src="images/icons/code.png"></img> welove</a></li>
-						<li class="file"><a href="#"><img class="icon" src="images/icons/code.png"></img> youfrom</a></li>
-						<li class="file"><a href="#"><img class="icon" src="images/icons/code.png"></img> ourhearts</a></li>
-						<li class="file"><a href="#"><img class="icon" src="images/icons/code.png"></img> reallyreally</a></li>
-						<li class="file"><a href="#"><img class="icon" src="images/icons/code.png"></img> nojoke</a></li>
-					</ul>
+					<div id="user" class="user active" style="display:all;">
+						<ul class="your-files">
+							<li class="file active"><a href="#" onClick="displayFile('basic')"><img class="icon" src="images/icons/code.png"></img> basic</a></li>
+							<li class="file" onClick="displayFile('test1')"><a href="#"><img class="icon" src="images/icons/code.png"></img> test1</a></li>
+							<li class="file" onClick="displayFile('adder')"><a href="#"><img class="icon" src="images/icons/code.png"></img> adder</a></li>
+							<li class="file" onClick="displayFile('jumps')"><a href="#"><img class="icon" src="images/icons/code.png"></img> jumps</a></li>
+							<li class="file">
+								<a href="#" onClick="displayFile('recursive')">
+									<img class="icon" src="images/icons/code.png"></img> recursive
+								</a>
+							</li>
+							<li class="file"><a href="#" onClick="displayFile('fun')"><img class="icon" src="images/icons/code.png"></img> fun</a></li>
+							<li class="file"><a href="#" onClick="displayFile('testtttt')"><img class="icon" src="images/icons/code.png"></img> testtttt</a></li>
+							<li class="file"><a href="#" onClick="displayFile('haha')"><img class="icon" src="images/icons/code.png"></img> haha</a></li>
+							<li class="file"><a href="#" onClick="displayFile('nojoke')"><img class="icon" src="images/icons/code.png"></img> nojoke</a></li>
+						</ul>
+					</div>
+					
+					<div class="user inactive" style="display:none;">
+						<ul class="your-files">
+							<li class="file active"><a href="#" onClick="displayFile('advanced stuff')"><img class="icon" src="images/icons/code.png"></img> advanced stuff</a></li>
+							<li class="file"><a href="#" onClick="displayFile('intro')"><img class="icon" src="images/icons/code.png"></img> intro</a></li>
+							<li class="file">
+								<a href="#" onClick="displayFile('snake')">
+									<img class="icon" src="images/icons/code.png"></img> snake
+								</a>
+							</li>
+							<li class="file"><a onClick="displayFile('bathe')" href="#"><img class="icon" src="images/icons/code.png"></img> bathe</a></li>
+							<li class="file"><a onClick="displayFile('inthe')" href="#"><img class="icon" src="images/icons/code.png"></img> inthe</a></li>
+							<li class="file"><a onClick="displayFile('sun')" href="#"><img class="icon" src="images/icons/code.png"></img> sun</a></li>
+						</ul>
+					</div>
 				</div>
 			</section>
 			<section class="code panel">
@@ -479,6 +467,7 @@
         <!-- <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"></script> -->
         <script src="js/es5-shim.js"></script>
         <script src="js/assembler.js"></script>
+		<script src="js/filehandler.js"></script>
         <script type="text/javascript" src="js/console.js"></script>
 
 	</body>
