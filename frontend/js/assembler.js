@@ -28,7 +28,8 @@ function SimulatorWidget(node) {
     simulator.reset();
     
     $node.find('.assembleButton').click(function () {
-      assembler.assembleCode();
+        simulator.runBinary();
+        assembler.assembleCode();
     });
     $node.find('.runButton').click(simulator.runBinary);
     $node.find('.runButton').click(simulator.stopDebugger);
@@ -1559,6 +1560,7 @@ function SimulatorWidget(node) {
 
     // Executes the assembled code
     function runBinary() {
+        console.log("run");
       if (codeRunning) {
         // Switch OFF everything
         stop();
@@ -1568,6 +1570,8 @@ function SimulatorWidget(node) {
         codeRunning = true;
         executeId = setInterval(multiExecute, 15);
       }
+        ourCode.displayStackButton();
+        ourCode.displayRegistersButton();
     }
 
     function multiExecute() {
@@ -1658,6 +1662,8 @@ function SimulatorWidget(node) {
         execute(true);
       //}
       updateDebugInfo();
+      ourCode.displayStackButton();
+      ourCode.displayRegistersButton();
     }
 
     function updateDebugInfo() {
@@ -1718,6 +1724,9 @@ function SimulatorWidget(node) {
       regSP = 0xff;
       regP = 0x30;
       updateDebugInfo();
+    
+      ourCode.displayStackButton();
+      ourCode.displayRegistersButton();
     }
 
     function stop() {
@@ -2730,15 +2739,19 @@ function SimulatorWidget(node) {
         var length = $node.find('.length').val();
         length = length.replace('$','');
         length = parseInt("0x" + length);
-        //store in array stack
+        
+        $(".stack").empty();
         for (var i=0x01ff; i>(0x01ff - length); i--){
-            console.log(num2hex(memory.get(i)));
+            $(".stack").append("<div class=\"frame\">\n<div id=\"address\"class=\"address\">0x01" + num2hex(i) + "</div>\n<div  class=\"value\">$"+num2hex(memory.get(i))+"</div>");
+            $(".address:contains(\"0x01\""+ num2hex(simulator.getSP())+")").addClass("sp");
         }
-        //console.log(num2hex(memory.get(0x01ff)));
-        //write to console
-        for (var i; i<stack.length; i++){
-            conosle.log(i);
-        }
+          
+          for (var i = 0; i < document.getElementsByClassName('address').length; i++) {
+              if (document.getElementsByClassName('address')[i].innerHTML == ("0x01"+num2hex(simulator.getSP()))) {
+                  $(".sp").append("<img id=\"spimage\"src=\"images/icons/forward.png\">");
+                  document.getElementsByClassName('address')[i].className += " sp";
+              }
+          }
       }
       function displayRegistersButton(){
           var x = simulator.getX();
@@ -2747,11 +2760,11 @@ function SimulatorWidget(node) {
           var sp = simulator.getSP();
           var pc = simulator.getPC();
           
-          $("#register-x .value").text(x);
-          $("#register-y .value").text(y);
-          $("#register-a .value").text(a);
-          $("#register-sp .value").text(sp);
-          $("#register-pc .value").text(pc);
+          $("#register-x .value").text("$" + num2hex(x));
+          $("#register-y .value").text("$" + num2hex(y));
+          $("#register-a .value").text("$" + num2hex(a));
+          $("#register-sp .value").text("$" + num2hex(sp));
+          $("#register-pc .value").text("$06" + num2hex(pc));
       }
       function displayHexdumpButton(){
           var dump = memory.format(0x600, assembler.getCodeLen());
