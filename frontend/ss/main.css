@@ -325,6 +325,10 @@ section.code div.code-data {
   height: calc(100% - 75px) !important;
   font-size: 1.125em;
   line-height: 1.8; }
+section.code .CodeMirror-line {
+  margin-left: 20px; }
+section.code .CodeMirror-cursors {
+  margin-left: 20px; }
 
 /* Scrollbar */
 ::-webkit-scrollbar {
