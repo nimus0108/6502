@@ -320,6 +320,15 @@ section.code div.file-title {
     position: absolute;
     top: 29px;
     right: calc(35.7142857% + 25px); }
+section.code div.code-data {
+  width: 100%;
+  height: calc(100% - 75px) !important;
+  font-size: 1.125em;
+  line-height: 1.8; }
+section.code .CodeMirror-line {
+  margin-left: 20px; }
+section.code .CodeMirror-cursors {
+  margin-left: 20px; }
 
 /* Scrollbar */
 ::-webkit-scrollbar {

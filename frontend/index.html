@@ -16,6 +16,7 @@
 
         
         <script type="text/javascript" src="codemirror/mode/javascript/javascript.js"></script>
+        <link rel="stylesheet" type="text/css" href="codemirror/theme/material.css">
 		<!-- Styles -->
         <link href="ss/main.css" rel="stylesheet">
 	</head>
@@ -94,10 +95,11 @@
 			//   });
 			$(document).ready(function() {
 				var editor = CodeMirror.fromTextArea($('#code6502')[0], {
-				  height: "150px",
-				  path: "codemirror/js/",
-				  textWrapping: true,
-				  lineNumbers: true
+					height: "100%",
+					path: "codemirror/js/",
+					theme: "material",
+					textWrapping: true,
+					lineNumbers: true
 				});
 			});
 		</script>

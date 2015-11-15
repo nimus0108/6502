@@ -23,6 +23,21 @@ section.code {
 		}
 	}
 
+	div.code-data {
+		width: 100%;
+		height: calc(100% - 75px) !important;
+		font-size: em(18px);
+		line-height: 1.8;
+	}
+
+	.CodeMirror-line {
+		margin-left: 20px;
+	}
+
+	.CodeMirror-cursors {
+		margin-left: 20px;
+	}
+
 	// div.code-data {
 	// 	width: 100%;
 	// 	height: calc(100% - 75px) !important;
