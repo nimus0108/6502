@@ -1,14 +1,58 @@
 /* Code Panel */
 section.code {
-	nav.tabs {
-		ul.tab-list {
-			list-style: none;
+	div.file-title {
+		width: 100%;
+		height: 75px;
+		margin: 0;
+		padding: 0;
+		background: rgba(255, 255, 255, 0.15);
+
+		.file-name {
+			color: $color-gallery;
+			font-size: em(16px);
+			text-align: center;
+			line-height: 75px;
 		}
 
-		li.tab {
-			min-width: 20%;
-			width: 300px;
-			max-width: 450px;
+		img.exit {
+			width: 17px;
+			height: 17px;
+			position: absolute;
+			top: 29px;
+			right: calc(35.7142857% + 25px);
+		}
+	}
+
+	div.code-data {
+		width: 100%;
+		ul.line-container {
+			@include span-columns(1);
+			list-style: none;
+			color: $color-boulder;
+			margin: 0;
+			padding: 20px 15px 0 0;
+			background-color: rgba(255, 255, 255, 0.05);
+			text-align: right;
+			line-height: 1.5;
+		}
+	}
+
+	div.code-text {
+		@include span-columns(13);
+		padding: 20px 0 0 15px;
+
+		textarea#code6502 {
+			width: 100%;
+			height: 100%;
+			background: none;
+			color: $color-gallery;
+			line-height: 1.5;
+			border: none;
+			outline: none;
+			text-align: left;
+			font-size: em(15px);
+			overflow: hidden;
+			resize: none;
 		}
 	}
 }

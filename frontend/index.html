@@ -11,14 +11,55 @@
 		<div class="full-container">
 			<section class="folder panel"></section>
 			<section class="code panel">
-				<nav class="tabs">
-					<ul class="tab-list">
-						<li class="tab">Sumo + liorogamer</li>
-					</ul>
-				</nav>
+				<div class="file-title">
+					<h1 class="file-name">Sumo + liorogamer</h1>
+					<img class="exit" src="images/icons/delete.png"></img>
+				</div>
+				<div class="code-data">
+					<div class="lines">
+						<ul class="line-container">
+							<li class="line">1</li>
+							<li class="line">2</li>
+							<li class="line">3</li>
+							<li class="line">4</li>
+							<li class="line">5</li>
+							<li class="line">6</li>
+							<li class="line">7</li>
+							<li class="line">8</li>
+							<li class="line">9</li>
+							<li class="line">1</li>
+							<li class="line">2</li>
+							<li class="line">3</li>
+							<li class="line">4</li>
+							<li class="line">5</li>
+							<li class="line">6</li>
+							<li class="line">7</li>
+							<li class="line">8</li>
+							<li class="line">9</li>
+							<li class="line">1</li>
+							<li class="line">2</li>
+							<li class="line">3</li>
+							<li class="line">4</li>
+							<li class="line">5</li>
+							<li class="line">6</li>
+							<li class="line">7</li>
+							<li class="line">8</li>
+							<li class="line">9</li>
+						</ul>
+					</div>
+					<div class="code-text">
+						<textarea id="code6502" onkeyup="auto_grow(this)"></textarea>
+					</div>
+				</div>
 			</section>
 			<section class="display panel"></section>
 		</div>
 		<script type="text/javascript" src="js/jquery.min.js"></script>
+		<script type="text/javascript">
+			function auto_grow(element) {
+	            element.style.height = "5px";
+	            element.style.height = (element.scrollHeight + 20) + "px";
+	        }
+        </script>
 	</body>
 </html>
