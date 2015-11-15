@@ -2,6 +2,7 @@
 
 <head>
 	<title>Login</title>
+	<link rel="shortcut icon" href="frontend/images/icons/favicon.ico">
 </head>
 
 <body>
@@ -56,6 +57,9 @@ $(function () {
     $('#summary').html('<strong>You must login to access data.</strong>');          
     $("#logged-out button").click(logIn);
     $("#logged-in button").click(logOut);
+	if (client.currentUser !== null) {
+		window.location.href="frontend/index.html?id="+client.currentUser.userId;
+	}
 });
 			});
 	</script>
