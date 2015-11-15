@@ -338,6 +338,14 @@ section.folder div.header {
   padding: 0;
   background: rgba(255, 255, 255, 0.15); }
 
+.half {
+  float: left;
+  display: block;
+  margin-right: 0%;
+  width: 50%; }
+  .half:last-child {
+    margin-right: 0; }
+
 .stack {
   min-width: 250px;
   width: 80%;
