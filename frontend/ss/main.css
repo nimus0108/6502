@@ -429,6 +429,32 @@ section.folder {
   .half:last-child {
     margin-right: 0; }
 
+.display-none {
+  display: none !important; }
+
+.visible-none {
+  opacity: 0; }
+
+#documentation {
+  padding-top: 50px !important;
+  overflow-y: scroll !important;
+  -webkit-transition: all 175ms ease;
+  -moz-transition: all 175ms ease;
+  -ms-transition: all 175ms ease;
+  -o-transition: all 175ms ease;
+  transition: all 175ms ease; }
+  #documentation img {
+    position: fixed;
+    top: 25px;
+    right: 40px; }
+
+#widgets {
+  -webkit-transition: all 175ms ease;
+  -moz-transition: all 175ms ease;
+  -ms-transition: all 175ms ease;
+  -o-transition: all 175ms ease;
+  transition: all 175ms ease; }
+
 .third {
   float: left;
   display: block;
@@ -449,6 +475,10 @@ section.folder {
 
 .top-square {
   padding-top: 35px; }
+
+canvas.screen {
+  display: block;
+  margin: 0 auto 25px; }
 
 .stack {
   min-width: 250px;
@@ -585,6 +615,16 @@ section.folder {
       margin-right: 0; }
     .action-button-container input:nth-child(3) {
       border-left: 1px solid #3e4649; }
+  .action-button-container .documentation-buttons {
+    position: relative;
+    top: 25px;
+    text-align: center;
+    color: #fdfdfd; }
+    .action-button-container .documentation-buttons h3 {
+      margin: 10px auto; }
+    .action-button-container .documentation-buttons button {
+      width: 320px;
+      margin: 0 auto; }
 
 /* Console.scss */
 div.console-visible {

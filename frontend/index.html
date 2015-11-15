@@ -96,12 +96,15 @@
 					</center>
 				</div>
 			</section>
-			<section class="display panel" style="color:white; padding-top:10px;display:none;">
+			<section class="display panel visible-none display-none" id="documentation" style="color:white; padding-top:10px;">
+				<div class="exit">
+					<a onclick="hideDocumentation()"><img src="images/icons/delete.png" width="33" height="33"></a>
+				</div>
 			    <div class="third">
                     <p style="text-align:center">ADC</p>
                     <p style="text-align:center">AND</p>
                     <p style="text-align:center">ASL</p>
-                    <br>
+                    <span style="display: block; height: 62px;"></span>
                     <p style="text-align:center">BCC</p>
                     <p style="text-align:center">BCS</p>
                     <p style="text-align:center">BEQ</p>
@@ -241,11 +244,11 @@
                     <p style="text-align:center">Transfer Index Y to Accumulator</p>
 			    </div>
 			</section>
-			<section class="display panel">
+			<section class="display panel" id="widgets">
 			    <div class="widget">
                   	<div class="top-square">
 			            <div class="half">
-			                <canvas class="screen" width="160" height="160"></canvas>
+			                <canvas class="screen" width="274" height="274"></canvas>
 							<div class="registers">
 								<div class="frame" id="register-a">
 									<div class="address">A</div>
@@ -400,13 +403,19 @@
 						<!--- halves close -->
 
 					</div>
-						<div class="buttons action-button-container">
-							<input class="button-offset"></input>
-							<!-- <input type="button" value="Stack" class="displayStackButton"> <!-- Print stack to Console --> 
-							<input type="button" value="Hexdump" class="displayHexdumpButton" onclick="showConsole();"> <!-- Print hexdump to Console -->
-							<!-- <input type="button" value="Registers" class="displayRegistersButton"> <!-- Print registers to Console --> 
-							<input type="button" value="Disassemble" class="displayDisassembleButton" onclick="showConsole();"> <!-- Print diassembled program to console -->
+					<div class="buttons action-button-container">
+						<input class="button-offset"></input>
+						<!-- <input type="button" value="Stack" class="displayStackButton"> <!-- Print stack to Console --> 
+						<input type="button" value="Hexdump" class="displayHexdumpButton" onclick="showConsole();"> <!-- Print hexdump to Console -->
+						<!-- <input type="button" value="Registers" class="displayRegistersButton"> <!-- Print registers to Console --> 
+						<input type="button" value="Disassemble" class="displayDisassembleButton" onclick="showConsole();"> <!-- Print diassembled program to console -->
+						<input class="button-offset"></input>
+
+		                <div class="documentation-buttons" onclick="showDocumentation()">
+		                	<h3>Need help with 6502?</h3>
+		                	<button>Read the Documentation</button>
 		                </div>
+	                </div>
 
                   <div class="monitor"><pre><code></code></pre></div>
                   <div class="messages"><pre><code></code></pre></div>
@@ -416,52 +425,31 @@
 		<!-- <script type="text/javascript" src="js/highlighter.js"></script> -->
 		<script type="text/javascript" src="js/jquery.linedtextarea.js"></script>
 		<script type="text/javascript">
-			// var myCodeMirror = CodeMirror($('#code-data'));
-			// var editor = CodeMirror.fromTextArea($('#code6502'), {
-			//     lineNumbers: true
-//			//   });
-//			$(document).ready(function() {
-//				var editor = CodeMirror.fromTextArea($('#code6502')[0], {
-//					height: "100%",
-//					path: "codemirror/js/",
-//					theme: "material",
-//					textWrapping: true,
-//					lineNumbers: true
-//				});
-//			});
-		</script>
-
-		<script type="text/javascript">
-		$( document ).ready(function() {
-			console.log( "ready!" );
+			$(document).ready(function() {
+				console.log("Code Panel initialized");
 				$("#code-textarea").linedtextarea();	
-		});
-			// $(function() {
-			// });
-			// var lineNumber = 2;
+			});
+        </script>
+        <script type="text/javascript">
+        	function showDocumentation() {
+        		setTimeout(function(){ 
+        			$('#widgets').addClass('display-none');
+        			$('#documentation').removeClass('visible-none');
+			    }, 175);  
 
-			// function countLines(theArea) {
-			// 	$('.line-container').innerHTML = "";
-			// 	for (var linenum = 1; linenum <= theArea.value.match(/\n/g).length + 1; linenum++) {
-			// 		console.log(linenum);
-			// 		$('.line-container').append('<li class="line">' + linenum+ '</li>');
-			// 	}
-			// }
+        		$('#widgets').addClass('visible-none');
+        		$('#documentation').removeClass('display-none');
+        	}
 
-			// function addLine() {
-			// 	$('.line-container').append('<li class="line">' + lineNumber + '</li>');
-			// 	console.log(lineNumber);
-			// 	lineNumber++;
-	  //       }
+        	function hideDocumentation() {
+        		setTimeout(function(){ 
+        			$('#documentation').addClass('display-none');
+        			$('#widgets').removeClass('visible-none');
+			    }, 175);  
 
-			// function auto_grow(element, event) {
-	  //           element.style.height = "5px";
-	  //           element.style.height = (element.scrollHeight + 20) + "px";
-	  //           console.log(event.keyCode);
-	  //           if (event.keyCode == 13) {
-	  //           	addLine();
-	  //           }
-	  //       }
+        		$('#documentation').addClass('visible-none');
+        		$('#widgets').removeClass('display-none');	
+        	}
         </script>
         
         <!-- <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"></script> -->

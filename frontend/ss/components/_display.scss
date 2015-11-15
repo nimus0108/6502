@@ -2,6 +2,39 @@
 	@include span-columns(7);
 }
 
+.display-none {
+	display: none !important;
+}
+
+.visible-none {
+	opacity: 0;
+}
+
+#documentation {
+	padding-top: 50px !important;
+	overflow-y: scroll !important;
+	-webkit-transition: all 175ms ease;
+	-moz-transition: all 175ms ease;
+	-ms-transition: all 175ms ease;
+	-o-transition: all 175ms ease;
+	transition: all 175ms ease;
+
+	img {
+		position: fixed;
+		top: 25px;
+		right: 40px;
+		// left: 92%;
+	}
+}
+
+#widgets {
+	-webkit-transition: all 175ms ease;
+	-moz-transition: all 175ms ease;
+	-ms-transition: all 175ms ease;
+	-o-transition: all 175ms ease;
+	transition: all 175ms ease;
+}
+
 .third {
   float: left;
   display: block;
@@ -22,12 +55,12 @@
 	padding-top: 35px;
 }
 
-//canvas.screen {
-//	display: block;
-//	width: 14.2857143vw;
-//	height: 14.2857143vw;
-//	margin: 0 auto 25px;
-//}
+canvas.screen {
+	display: block;
+	// width: 14.2857143vw;
+	// height: 14.2857143vw;
+	margin: 0 auto 25px;
+}
 
 .stack {
 	min-width: 250px;
@@ -175,6 +208,22 @@ $grid-columns: 12;
 
 		&:nth-child(3) {
 			border-left: 1px solid $color-space;
+		}
+	}
+
+	.documentation-buttons {
+		position: relative;
+		top: 25px;
+		text-align: center;
+		color: $color-white;
+
+		h3 {
+			margin: 10px auto;
+		}
+
+		button {
+			width: 320px;
+			margin: 0 auto;
 		}
 	}
 }
