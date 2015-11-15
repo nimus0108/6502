@@ -2,13 +2,24 @@
 	@include span-columns(7);
 }
 
+.top-square {
+	padding-top: 35px;
+}
+
+canvas.screen {
+	display: block;
+	width: 14.2857143vw;
+	height: 14.2857143vw;
+	margin: 0 auto 25px;
+}
+
 .stack {
 	min-width: 250px;
 	width: 80%;
 	max-width: 300px;
-	height: 400px;
+	height: 559px;
 	max-height: 70%;
-	margin: 0 5%;
+	margin: 0 auto;
 	
 	// For bottom to top stacking
 	display: flex;
@@ -50,7 +61,7 @@
 	min-width: 250px;
 	width: 80%;
 	max-width: 300px;
-	margin: 0 5%;
+	margin: 0 auto;
 
 	.frame {
   		width: 100%;

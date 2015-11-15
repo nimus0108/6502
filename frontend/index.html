@@ -60,81 +60,146 @@ STA $0202
 			</section>
 			<section class="display panel">
 			    <div class="widget">
-                  <!-- JAY MO CODE -->
-		            <div class="half">
-		                <canvas class="screen" width="160" height="160"></canvas>
-						<div class="registers">
-							<div class="frame">
-								<div class="address">A</div>
-								<div class="value">00</div>
+                  	<div class="top-square">
+			            <div class="half">
+			                <canvas class="screen"></canvas>
+							<div class="registers">
+								<div class="frame">
+									<div class="address">A</div>
+									<div class="value">00</div>
+								</div>
+								<div class="frame">
+									<div class="address">X</div>
+									<div class="value">00</div>
+								</div>
+								<div class="frame">
+									<div class="address">Y</div>
+									<div class="value">00</div>
+								</div>
+								<div class="frame">
+									<div class="address">PC</div>
+									<div class="value">00</div>
+								</div>
+								<div class="frame">
+									<div class="address">SP</div>
+									<div class="value">00</div>
+								</div>
 							</div>
-							<div class="frame">
-								<div class="address">X</div>
-								<div class="value">00</div>
-							</div>
-							<div class="frame">
-								<div class="address">Y</div>
-								<div class="value">00</div>
-							</div>
-							<div class="frame">
-								<div class="address">PC</div>
-								<div class="value">00</div>
-							</div>
-							<div class="frame">
-								<div class="address">SP</div>
-								<div class="value">00</div>
+						</div>
+
+			            <div class="half">
+							<div class="stack">
+								<div class="frame">
+									<div class="address">0x01FF</div>
+									<div class="value">01</div>
+								</div>
+								<div class="frame">
+									<div class="address">0x01FE</div>
+									<div class="value">08</div>
+								</div>
+								<div class="frame">
+									<div class="address">0x01FD</div>
+									<div class="value">12</div>
+								</div>
+								<div class="frame">
+									<div class="address">0x01FC</div>
+									<div class="value">04</div>
+								</div>
+								<div class="frame">
+									<div class="address">0x01FB</div>
+									<div class="value">20</div>
+								</div>
+								<div class="frame">
+									<div class="address">0x01FA</div>
+									<div class="value">00</div>
+								</div>
+								<div class="frame">
+									<div class="address">0x01F9</div>
+									<div class="value">65</div>
+								</div>
+								<div class="frame">
+									<div class="address">0x01F8</div>
+									<div class="value">02</div>
+								</div>
+								<div class="frame">
+									<div class="address sp">0x01F7 <img src="images/icons/forward.png"></div>
+									<div class="value">00</div>
+								</div>
+								<div class="frame">
+									<div class="address">0x01F6</div>
+									<div class="value">00</div>
+								</div>
+								<div class="frame">
+									<div class="address">0x01F5</div>
+									<div class="value">00</div>
+								</div>
+								<div class="frame">
+									<div class="address">0x01F4</div>
+									<div class="value">00</div>
+								</div>
+								<div class="frame">
+									<div class="address">0x01F3</div>
+									<div class="value">00</div>
+								</div>
+								<div class="frame">
+									<div class="address">0x01F2</div>
+									<div class="value">00</div>
+								</div>
+								<div class="frame">
+									<div class="address">0x01F1</div>
+									<div class="value">00</div>
+								</div>
+								<div class="frame">
+									<div class="address">0x01F0</div>
+									<div class="value">00</div>
+								</div>
+								<div class="frame">
+									<div class="address">0x01EF</div>
+									<div class="value">00</div>
+								</div>
+								<div class="frame">
+									<div class="address">0x01EE</div>
+									<div class="value">00</div>
+								</div>
+								<div class="frame">
+									<div class="address">0x01ED</div>
+									<div class="value">00</div>
+								</div>
+								<div class="frame">
+									<div class="address">0x01EC</div>
+									<div class="value">00</div>
+								</div>
+								<div class="frame">
+									<div class="address">0x01EB</div>
+									<div class="value">00</div>
+								</div>
+								<div class="frame">
+									<div class="address">0x01EA</div>
+									<div class="value">00</div>
+								</div>
+								<div class="frame">
+									<div class="address">0x01E9</div>
+									<div class="value">00</div>
+								</div>
+								<div class="frame">
+									<div class="address">0x01E8</div>
+									<div class="value">00</div>
+								</div>
+								<div class="frame">
+									<div class="address">0x01E7</div>
+									<div class="value">00</div>
+								</div>
+								<div class="frame">
+									<div class="address">0x01E6</div>
+									<div class="value">00</div>
+								</div>
+								<div class="frame">
+									<div class="address">0x01E5</div>
+									<div class="value">00</div>
+								</div>
 							</div>
 						</div>
 					</div>
-
-            <div class="half">
-				<div class="stack">
-					<div class="frame">
-						<div class="address">0x01FF</div>
-						<div class="value">01</div>
-					</div>
-					<div class="frame">
-						<div class="address">0x01FE</div>
-						<div class="value">08</div>
-					</div>
-					<div class="frame">
-						<div class="address">0x01FD</div>
-						<div class="value">12</div>
-					</div>
-					<div class="frame">
-						<div class="address">0x01FC</div>
-						<div class="value">04</div>
-					</div>
-					<div class="frame">
-						<div class="address">0x01FB</div>
-						<div class="value">20</div>
-					</div>
-					<div class="frame">
-						<div class="address">0x01FA</div>
-						<div class="value">00</div>
-					</div>
-					<div class="frame">
-						<div class="address">0x01F9</div>
-						<div class="value">65</div>
-					</div>
-					<div class="frame">
-						<div class="address">0x01F8</div>
-						<div class="value">02</div>
-					</div>
-					<div class="frame">
-						<div class="address sp">0x01F7 <img src="images/icons/forward.png"></div>
-						<div class="value">00</div>
-					</div>
-					<div class="frame">
-						<div class="address">0x01F6</div>
-						<div class="value">00</div>
-					</div>
-					<div class="frame">
-						<div class="address">0x01F5</div>
-						<div class="value">00</div>
-					</div>
-				</div>
-			</div>
 
                   <div class="debugger">
                     <input type="checkbox" class="debug" name="debug" />
