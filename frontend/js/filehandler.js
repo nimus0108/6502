@@ -2,6 +2,10 @@ var bigDiv = document.getElementsByClassName("user active");
 console.log(bigDiv);
 
 function displayFile(name) {
+	$('li').removeClass('active');
+	var e = document.getElementById(name);
+	e.parentNode.className += " active";
+	
     var programs = new Array();
     programs['colored'] = "\n\
 ; This program draws my initial.  Pressing different numbers results in\n\
@@ -63,7 +67,7 @@ drawInitials:\n\
 \
 	jmp readKeys\
 ";
-program['disassembled'] = "\n\
+programs['disassembled'] = "\n\
 ;\n\
 ; This program draws my initial.  Pressing different numbers results in\n\
 ; the initials displaying with different colors.\n\
@@ -125,7 +129,7 @@ drawInitials:\n\
 	jmp readKeys\n\
 ";
 
-program['firstprogram'] = "\n\
+programs['firstprogram'] = "\n\
 LDA #$01\n\
 STA $0200\n\
 LDA #$05\n\
@@ -134,7 +138,7 @@ LDA #$08\n\
 STA $0202\n\
 "
 
-program['functions'] = "\
+programs['functions'] = "\
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;\n\
 ; Constant values\n\
 ;\n\
@@ -321,7 +325,7 @@ merged_code:\n\
 	RTS\n\
 ";   
 
-program['program2'] = "\n\
+programs['program2'] = "\n\
 ;\n\
 ; This program draws my initial.  The difference between this program and \n\
 ; the first is that this one uses a subroutine.\n\
@@ -373,4 +377,248 @@ drawInitials:\n\
 	STA $0389\n\
 rts\n";
     
+	programs['snake'] = "\
+	\n\
+	;  ___           _        __ ___  __ ___\n\
+; / __|_ _  __ _| |_____ / /| __|/  \_  )\n\
+; \__ \ ' \/ _` | / / -_) _ \__ \ () / /\n\
+; |___/_||_\__,_|_\_\___\___/___/\__/___|\n\
+; Change direction: W A S D\n\
+define appleL         $00 ; screen location of apple, low byte\n\
+define appleH         $01 ; screen location of apple, high byte\n\
+define snakeHeadL     $10 ; screen location of snake head, low byte\n\
+define snakeHeadH     $11 ; screen location of snake head, high byte\n\
+define snakeBodyStart $12 ; start of snake body byte pairs\n\
+define snakeDirection $02 ; direction (possible values are below)\n\
+define snakeLength    $03 ; snake length, in bytes\n\
+; Directions (each using a separate bit)\n\
+define movingUp      1\n\
+define movingRight   2\n\
+define movingDown    4\n\
+define movingLeft    8\n\
+; ASCII values of keys controlling the snake\n\
+define ASCII_w      $77\n\
+define ASCII_a      $61\n\
+define ASCII_s      $73\n\
+define ASCII_d      $64\n\
+; System variables\n\
+define sysRandom    $fe\n\
+define sysLastKey   $ff\n\
+  jsr init\n\
+  jsr loop\n\
+init:\n\
+  jsr initSnake\n\
+  jsr generateApplePosition\n\
+  rts\n\
+initSnake:\n\
+  lda #movingRight  ;start direction\n\
+  sta snakeDirection\n\
+  lda #4  ;start length (2 segments)\n\
+  sta snakeLength \n\
+  lda #$11\n\
+  sta snakeHeadL\n\
+  lda #$10\n\
+  sta snakeBodyStart\n\
+  lda #$0f\n\
+  sta $14 ; body segment 1\n\
+  lda #$04\n\
+  sta snakeHeadH\n\
+  sta $13 ; body segment 1\n\
+  sta $15 ; body segment 2\n\
+  rts\n\
+generateApplePosition:\n\
+  ;load a new random byte into $00\n\
+  lda sysRandom\n\
+  sta appleL\n\
+  ;load a new random number from 2 to 5 into $01\n\
+  lda sysRandom\n\
+  and #$03 ;mask out lowest 2 bits\n\
+  clc\n\
+  adc #2\n\
+  sta appleH\n\
+  rts\n\
+loop:\n\
+  jsr readKeys\n\
+  jsr checkCollision\n\
+  jsr updateSnake\n\
+  jsr drawApple\n\
+  jsr drawSnake\n\
+  jsr spinWheels\n\
+  jmp loop\n\
+readKeys:\n\
+  lda sysLastKey \n\
+  cmp #ASCII_w\n\
+  beq upKey\n\
+  cmp #ASCII_d\n\
+  beq rightKey\n\
+  cmp #ASCII_s\n\
+  beq downKey\n\
+  cmp #ASCII_a\n\
+  beq leftKey\n\
+  rts\n\
+upKey:\n\
+  lda #movingDown\n\
+  bit snakeDirection\n\
+  bne illegalMove\n\
+  lda #movingUp\n\
+  sta snakeDirection\n\
+  rts\n\
+rightKey:\n\
+  lda #movingLeft\n\
+  bit snakeDirection\n\
+  bne illegalMove\n\
+  lda #movingRight\n\
+  sta snakeDirection\n\
+  rts\n\
+downKey:\n\
+  lda #movingUp\n\
+  bit snakeDirection\n\
+  bne illegalMove\n\
+  lda #movingDown\n\
+  sta snakeDirection\n\
+  rts\n\
+leftKey:\n\
+  lda #movingRight\n\
+  bit snakeDirection\n\
+  bne illegalMove\n\
+  lda #movingLeft\n\
+  sta snakeDirection\n\
+  rts\n\
+illegalMove:\n\
+  rts\n\
+checkCollision:\n\
+  jsr checkAppleCollision\n\
+  jsr checkSnakeCollision\n\
+  rts\n\
+checkAppleCollision:\n\
+  lda appleL\n\
+  cmp snakeHeadL\n\
+  bne doneCheckingAppleCollision\n\
+  lda appleH\n\
+  cmp snakeHeadH\n\
+  bne doneCheckingAppleCollision\n\
+  ;eat apple\n\
+  inc snakeLength\n\
+  inc snakeLength ;increase length\n\
+  jsr generateApplePosition\n\
+doneCheckingAppleCollision:\n\
+  rts\n\
+checkSnakeCollision:\n\
+  ldx #2 ;start with second segment\n\
+snakeCollisionLoop:\n\
+  lda snakeHeadL,x\n\
+  cmp snakeHeadL\n\
+  bne continueCollisionLoop\n\
+maybeCollided:\n\
+  lda snakeHeadH,x\n\
+  cmp snakeHeadH\n\
+  beq didCollide\n\
+continueCollisionLoop:\n\
+  inx\n\
+  inx\n\
+  cpx snakeLength          ;got to last section with no collision\n\
+  beq didntCollide\n\
+  jmp snakeCollisionLoop\n\
+didCollide:\n\
+  jmp gameOver\n\
+didntCollide:\n\
+  rts\n\
+updateSnake:\n\
+  ldx snakeLength\n\
+  dex\n\
+  txa\n\
+updateloop:\n\
+  lda snakeHeadL,x\n\
+  sta snakeBodyStart,x\n\
+  dex\n\
+  bpl updateloop\n\
+\n\
+  lda snakeDirection\n\
+  lsr\n\
+  bcs up\n\
+  lsr\n\
+  bcs right\n\
+  lsr\n\
+  bcs down\n\
+  lsr\n\
+  bcs left\n\
+up:\n\
+  lda snakeHeadL\n\
+  sec\n\
+  sbc #$20\n\
+  sta snakeHeadL\n\
+  bcc upup\n\
+  rts\n\
+upup:\n\
+  dec snakeHeadH\n\
+  lda #$1\n\
+  cmp snakeHeadH\n\
+  beq collision\n\
+  rts\n\
+right:\n\
+  inc snakeHeadL\n\
+  lda #$1f\n\
+  bit snakeHeadL\n\
+  beq collision\n\
+  rts\n\
+down:\n\
+  lda snakeHeadL\n\
+  clc\n\
+  adc #$20\n\
+  sta snakeHeadL\n\
+  bcs downdown\n\
+  rts\n\
+downdown:\n\
+  inc snakeHeadH\n\
+  lda #$6\n\
+  cmp snakeHeadH\n\
+  beq collision\n\
+  rts\n\
+left:\n\
+  dec snakeHeadL\n\
+  lda snakeHeadL\n\
+  and #$1f\n\
+  cmp #$1f\n\
+  beq collision\n\
+  rts\n\
+collision:\n\
+  jmp gameOver\n\
+drawApple:\n\
+  ldy #0\n\
+  lda sysRandom\n\
+  sta (appleL),y\n\
+  rts\n\
+drawSnake:\n\
+  ldx snakeLength\n\
+  lda #0\n\
+  sta (snakeHeadL,x) ; erase end of tail\n\
+  ldx #0\n\
+  lda #1\n\
+  sta (snakeHeadL,x) ; paint head\n\
+  rts\n\
+spinWheels:\n\
+  ldx #0\n\
+spinloop:\n\
+  nop\n\
+  nop\n\
+  dex\n\
+  bne spinloop\n\
+  rts\n\
+gameOver:\n\
+	";
+	
+	
+	if (name == 'test1' || name == 'jumps' || name == 'adder' || name == 'recursive') {
+		$("#code-textarea").val(programs['colored']);
+	} else if (name == 'testtttt' || name == "haha" || name == "nojoke") {
+		$("#code-textarea").val(programs['disassembled']);
+	} else if (name == "advanced" || name == "intro") {
+		$("#code-textarea").val(programs['firstprogram']);
+	} else if (name == "snake") {
+		$("#code-textarea").val(programs['snake']);
+	} else if (name == "bathe" || name =="inthe") {
+		$("#code-textarea").val(programs['program2']);
+	} else if (name == "sun" || name == 'fun') {
+		$("#code-textarea").val(programs['functions2']);
+	}
 }
