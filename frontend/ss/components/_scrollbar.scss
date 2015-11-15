@@ -18,3 +18,11 @@
 
 ::-webkit-scrollbar-corner       {  }
 ::-webkit-resizer                {  }
+
+.stack::-webkit-scrollbar-thumb {
+	background: rgba(255, 255, 255, 0.2);
+}
+
+.stack::-webkit-scrollbar-track {
+	background: #596164;
+}
