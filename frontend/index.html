@@ -12,11 +12,9 @@
         <link rel="stylesheet" type="text/css" href="codemirror/codemirror.css">
 -->
         <!--Default CSS-->
-<!--
-        <link rel="stylesheet" href="js/styles.css">
-        <link rel="stylesheet" href="js/style.css">
-        <link rel="stylesheet" href="js/pygment_trac.css">
--->
+<!--        <link rel="stylesheet" href="js/styles.css">-->
+<!--        <link rel="stylesheet" href="js/style.css">-->
+<!--        <link rel="stylesheet" href="js/pygment_trac.css">-->
 
         
 <!--
@@ -28,6 +26,32 @@
 	</head>
 	<body>
 		<div class="full-container widget">
+			<section class="folder panel" style="display:none">
+				<div class="header">
+					<h1 class="title">6502 IDE</h1>
+				</div>
+				<div class="files">
+					<h2 class="file-header">YOUR FILES</h2>
+					<ul class="your-files">
+						<li class="file"><a href="#"><img class="icon" src="images/icons/code.png"></img> jaymo</a></li>
+						<li class="file"><a href="#"><img class="icon" src="images/icons/code.png"></img> su min</a></li>
+						<li class="file"><a href="#"><img class="icon" src="images/icons/code.png"></img> liam</a></li>
+						<li class="file"><a href="#"><img class="icon" src="images/icons/code.png"></img> sarah</a></li>
+						<li class="file"><a href="#"><img class="icon" src="images/icons/code.png"></img> jeremy</a></li>
+						<li class="file active">
+							<a href="#">
+								<img class="icon" src="images/icons/code.png"></img> microsoft
+							</a>
+							<img class="icon delete" src="images/icons/delete.png">
+						</li>
+						<li class="file"><a href="#"><img class="icon" src="images/icons/code.png"></img> welove</a></li>
+						<li class="file"><a href="#"><img class="icon" src="images/icons/code.png"></img> youfrom</a></li>
+						<li class="file"><a href="#"><img class="icon" src="images/icons/code.png"></img> ourhearts</a></li>
+						<li class="file"><a href="#"><img class="icon" src="images/icons/code.png"></img> reallyreally</a></li>
+						<li class="file"><a href="#"><img class="icon" src="images/icons/code.png"></img> nojoke</a></li>
+					</ul>
+				</div>
+			</section>
 			<section class="folder panel">
 				<div class="header">
 					<h1 class="title">6502 IDE</h1>
@@ -235,7 +259,7 @@
 			    <div class="widget">
                   	<div class="top-square">
 			            <div class="half">
-			                <canvas class="screen"></canvas>
+			                <canvas class="screen" width="160" height="160"></canvas>
 							<div class="registers">
 								<div class="frame" id="register-a">
 									<div class="address">A</div>

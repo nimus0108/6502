@@ -445,7 +445,8 @@ canvas.screen {
   display: block;
   width: 14.2857143vw;
   height: 14.2857143vw;
-  margin: 0 auto 25px; }
+  margin: 0 auto 25px;
+}
 
 .stack {
   min-width: 250px;
