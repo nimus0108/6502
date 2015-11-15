@@ -1,90 +1,470 @@
-<html>
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<title>6502 IDE</title>
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+		<link rel="icon" href="images/icons/favicon.ico" type="image/x-icon">
+		<link rel="shortcut icon" href="images/icons/favicon.ico" type="image/x-icon">
 
-<head>
-	<title>Login</title>
-	<link rel="shortcut icon" href="frontend/images/icons/favicon.ico">
-</head>
+		<link rel="stylesheet" type="text/css" href="js/jquery.linedtextarea.css">
+        
+<!--
 
-<body>
+        <script type="text/javascript" src="codemirror/codemirror.js"></script>
+        <link rel="stylesheet" type="text/css" href="codemirror/codemirror.css">
+-->
+        <!--Default CSS-->
+<!--        <link rel="stylesheet" href="js/styles.css">-->
+<!--        <link rel="stylesheet" href="js/style.css">-->
+<!--        <link rel="stylesheet" href="js/pygment_trac.css">-->
 
-	<div id="logged-in">
-		You are logged in as <span id="login-name"></span>.
-		<button id="log-out">Log out</button>
-	</div>
-	<div id="logged-out">
-		You are not logged in.
-		<button>Log in</button>
-	</div>
+        
+<!--
+        <script type="text/javascript" src="codemirror/mode/javascript/javascript.js"></script>
+        <link rel="stylesheet" type="text/css" href="codemirror/theme/material.css">
+-->
+		<!-- Styles -->
+        <link href="ss/main.css" rel="stylesheet">
 
+        <!-- TYPEKIT -->
+        <script src="https://use.typekit.net/eij1hag.js"></script>
+		<script>try{Typekit.load({ async: true });}catch(e){}</script>
+	</head>
+	<body>
+		<div class="full-container widget">
+			<section class="folder panel">
+				<div class="header">
+					<h1 class="title">6502 IDE</h1>
+				</div>
+				<div class="files">
+					<h2 class="file-header">YOUR FILES</h2>
+					<div id="user" class="user active" style="display:all;">
+						<ul class="your-files">
+						    <li class="file">
+								<a href="#" onClick="displayFile('snake')" id = "snake" >
+									<img class="icon" src="images/icons/code.png"></img> snake
+								</a>
+							</li>
+							<li class="file" ><a id = "test1" onClick="displayFile('test1')" href="#"><img class="icon" src="images/icons/code.png"></img> test1</a></li>
+				            <li class="file active"><a id = "basic" href="#" onClick="displayFile('basic')"><img class="icon" src="images/icons/code.png"></img> basic</a></li>
 
-	<script src="frontend/js/jquery.min.js"></script>
-	<script src="http://ajax.aspnetcdn.com/ajax/mobileservices/MobileServices.Web-1.2.7.min.js"></script>
+							<li class="file" ><a href="#" id = "jumps" onClick="displayFile('jumps')"><img class="icon" src="images/icons/code.png"></img> jumps</a></li>
+							<li class="file"><a href="#" onClick="displayFile('fun')"id = "fun" ><img class="icon" src="images/icons/code.png"></img> fun</a></li>
+							<li class="file">
+								<a href="#" onClick="displayFile('recursive')"id = "recursive" >
+									<img class="icon" src="images/icons/code.png"></img> recursive
+								</a>
+							</li>
+							<li class="file"><a href="#" onClick="displayFile('nojoke')" id = "nojoke" ><img class="icon" src="images/icons/code.png"></img> nojoke</a></li>
+							<li class="file"><a onClick="displayFile('sun')" href="#" id = "sun" ><img class="icon" src="images/icons/code.png"></img> sun</a></li>
+							<li class="file"><a href="#" onClick="displayFile('haha')"id = "haha" ><img class="icon" src="images/icons/code.png"></img> haha</a></li>
+						</ul>
+					</div>
+					
+					<div class="user inactive" style="display:none;">
+						<ul class="your-files">
+							<li class="file active"><a href="#" onClick="displayFile('advanced')" id = "advanced" ><img class="icon" src="images/icons/code.png"></img> advanced stuff</a></li>
+							<li class="file"><a href="#" onClick="displayFile('intro')" id = "intro" ><img class="icon" src="images/icons/code.png"></img> intro</a></li>
+							<li class="file"><a onClick="displayFile('bathe')" href="#" id = "bathe" ><img class="icon" src="images/icons/code.png"></img> bathe</a></li>
+                            <li class="file" ><a href="#" id = "adder" onClick="displayFile('adder')"><img class="icon" src="images/icons/code.png"></img> adder</a></li>
+				        <li class="file"><a href="#" onClick="displayFile('testtttt')"id = "testtttt" ><img class="icon" src="images/icons/code.png"></img> testtttt</a></li>
+							<li class="file"><a onClick="displayFile('inthe')" href="#" id = "inthe" ><img class="icon" src="images/icons/code.png"></img> inthe</a></li>
+							
+						</ul>
+					</div>
+				</div>
+			</section>
+			<section class="code panel">
+				<div class="file-title">
+					<h1 class="file-name">microsoft</h1>
+					<img class="exit" src="images/icons/delete.png"></img>
+				</div>
+				<div class="buttons">
+					<input type="button" value="Assemble" class="assembleButton" />
+					<input type="button" value="Run" class="runButton" />
+					<input type="button" value="Reset" class="resetButton" />
+				</div>
+				<div class="code-data">
+					<div class="code-text">
+						<textarea class="code1" id="code-textarea">
+						LDA #$01
+						STA $0200
+						LDA #$05
+						STA $0201
+						LDA #$08
+						STA $0202
+						</textarea>
+					</div>
+				</div>
+				<div class="console console-hidden">
+					<center>
+						<button id="closeConsoleButton" onclick="hideConsole()" style="width: 300px; margin: 75px auto;">Close Console</button>
+					</center>
+				</div>
+			</section>
+			<section class="display panel visible-none display-none" id="documentation" style="color:white; padding-top:10px;">
+				<div class="exit">
+					<a onclick="hideDocumentation()"><img src="images/icons/delete.png" width="33" height="33"></a>
+				</div>
+			    <div class="third">
+                    <p style="text-align:center">ADC</p>
+                    <p style="text-align:center">AND</p>
+                    <p style="text-align:center">ASL</p>
+                    <br>
+                    <!-- <span style="display: block; height: 62px;"></span> -->
+                    <p style="text-align:center">BCC</p>
+                    <p style="text-align:center">BCS</p>
+                    <p style="text-align:center">BEQ</p>
+                    <p style="text-align:center">BIT</p>
+                    <p style="text-align:center">BMI</p>
+                    <p style="text-align:center">BNE</p>
+                    <p style="text-align:center">BPL</p>
+                    <p style="text-align:center">BRK</p>
+                    <p style="text-align:center">BVC</p>
+                    <p style="text-align:center">BVS</p>
+                    <br>
+                    <p style="text-align:center">CLC</p>
+                    <p style="text-align:center">CLD</p>
+                    <p style="text-align:center">CLI</p>
+                    <p style="text-align:center">CLV</p>
+                    <p style="text-align:center">CMP</p>
+                    <p style="text-align:center">CPX</p>
+                    <p style="text-align:center">CPY</p>
+                    <br>
+                    <p style="text-align:center">DEC</p>
+                    <p style="text-align:center">DEX</p>
+                    <p style="text-align:center">DEY</p>
+                    <br>
+                    <p style="text-align:center">EOR</p>
+                    <br>
+                    <p style="text-align:center">INC</p>
+                    <p style="text-align:center">INX</p>
+                    <p style="text-align:center">INY</p>
+                    <br>
+                    <p style="text-align:center">JMP</p>
+                    <p style="text-align:center">JSR</p>
+                    <br>
+                    <p style="text-align:center">LDA</p>
+                    <p style="text-align:center">LDX</p>
+                    <p style="text-align:center">LDY</p>
+                    <p style="text-align:center">LSR</p>
+                    <br>
+                    <p style="text-align:center">NOP</p>
+                    <br>
+                    <p style="text-align:center">ORA</p>
+                    <br>
+                    <p style="text-align:center">PHA</p>
+                    <p style="text-align:center">PHP</p>
+                    <p style="text-align:center">PLA</p>
+                    <p style="text-align:center">PLP</p>
+                    <br>
+                    <p style="text-align:center">ROL</p>
+                    <p style="text-align:center">ROR</p>
+                    <p style="text-align:center">RTI</p>
+                    <p style="text-align:center">RTS</p>
+                    <br>
+                    <p style="text-align:center">SBC</p>
+                    <p style="text-align:center">SEC</p>
+                    <p style="text-align:center">SED</p>
+                    <p style="text-align:center">SEI</p>
+                    <p style="text-align:center">STA</p>
+                    <p style="text-align:center">STX</p>
+                    <p style="text-align:center">STY</p>
+                    <br>
+                    <p style="text-align:center">TAX</p>
+                    <p style="text-align:center">TAY</p>
+                    <p style="text-align:center">TSX</p>
+                    <p style="text-align:center">TXA</p>
+                    <p style="text-align:center">TXS</p>
+                    <p style="text-align:center">TYA</p>
+			    </div>
+			    <div class="two-thirds">
+                    <p style="text-align:center">Add Memory to Accumulator with Carry</p>
 
+                    <p style="text-align:center">"AND" Memory with Accumulator</p>
+                    <p style="text-align:center">Shift Left One Bit (Memory or Accumulator)</p>
+                    <br>
+                    <p style="text-align:center">Branch on Carry Clear</p>
+                    <p style="text-align:center">Branch on Carry Set</p>
+                    <p style="text-align:center">Branch on Result Zero</p>
+                    <p style="text-align:center">Test Bits in Memory with Accumulator</p>
+                    <p style="text-align:center">Branch on Result Minus</p>
+                    <p style="text-align:center">Branch on Result not Zero</p>
+                    <p style="text-align:center">Branch on Result Plus</p>
+                    <p style="text-align:center">Force Break</p>
+                    <p style="text-align:center">Branch on Overflow Clear</p>
+                    <p style="text-align:center">Branch on Overflow Set</p>
+                    <br>
+                    <p style="text-align:center">Clear Carry Flag</p>
+                    <p style="text-align:center">Clear Decimal Mode</p>
+                    <p style="text-align:center">Clear interrupt Disable Bit</p>
+                    <p style="text-align:center">Clear Overflow Flag</p>
+                    <p style="text-align:center">Compare Memory and Accumulator</p>
+                    <p style="text-align:center">Compare Memory and Index X</p>
+                    <p style="text-align:center">Compare Memory and Index Y</p>
+                    <br>
+                    <p style="text-align:center">Decrement Memory by One</p>
+                    <p style="text-align:center">Decrement Index X by One</p>
+                    <p style="text-align:center">Decrement Index Y by One</p>
+                    <br>
+                    <p style="text-align:center">"Exclusive-Or" Memory with Accumulator</p>
+                    <br>
+                    <p style="text-align:center">Increment Memory by One</p>
+                    <p style="text-align:center">Increment Index X by One</p>
+                    <p style="text-align:center">Increment Index Y by One</p>
+                    <br>
+                    <p style="text-align:center">Jump to New Location</p>
+                    <p style="text-align:center">Jump to New Location Saving Return Address</p>
+                    <br>
+                    <p style="text-align:center">Load Accumulator with Memory</p>
+                    <p style="text-align:center">Load Index X with Memory</p>
+                    <p style="text-align:center">Load Index Y with Memory</p>
+                    <p style="text-align:center">Shift Right One Bit (Memory or Accumulator)</p>
+                    <br>
+                    <p style="text-align:center">No Operation</p>
+                    <br>
+                    <p style="text-align:center">"OR" Memory with Accumulator</p>
+                    <br>
+                    <p style="text-align:center">Push Accumulator on Stack</p>
+                    <p style="text-align:center">Push Processor Status on Stack</p>
+                    <p style="text-align:center">Pull Accumulator from Stack</p>
+                    <p style="text-align:center">Pull Processor Status from Stack</p>
+                    <br>
+                    <p style="text-align:center">Rotate One Bit Left (Memory or Accumulator)</p>
+                    <p style="text-align:center">Rotate One Bit Right (Memory or Accumulator)</p>
+                    <p style="text-align:center">Return from Interrupt</p>
+                    <p style="text-align:center">Return from Subroutine</p>
+                    <br>
+                    <p style="text-align:center">Subtract Memory from Accumulator with Borrow</p>
+                    <p style="text-align:center">Set Carry Flag</p>
+                    <p style="text-align:center">Set Decimal Mode</p>
+                    <p style="text-align:center">Set Interrupt Disable Status</p>
+                    <p style="text-align:center">Store Accumulator in Memory</p>
+                    <p style="text-align:center">Store Index X in Memory</p>
+                    <p style="text-align:center">Store Index Y in Memory</p>
+                    <br>
+                    <p style="text-align:center">Transfer Accumulator to Index X</p>
+                    <p style="text-align:center">Transfer Accumulator to Index Y</p>
+                    <p style="text-align:center">Transfer Stack Pointer to Index X</p>
+                    <p style="text-align:center">Transfer Index X to Accumulator</p>
+                    <p style="text-align:center">Transfer Index X to Stack Pointer</p>
+                    <p style="text-align:center">Transfer Index Y to Accumulator</p>
+			    </div>
+			</section>
+			<section class="display panel" id="widgets">
+			    <div class="widget">
+                  	<div class="top-square">
+			            <div class="half" style="z-index: 2;">
+			                <canvas class="screen" width="274" height="274"></canvas>
+							<div class="registers">
+								<div class="frame" id="register-a">
+									<div class="address">A</div>
+									<div class="value">00</div>
+								</div>
+								<div class="frame" id="register-x">
+									<div class="address">X</div>
+									<div class="value">00</div>
+								</div>
+								<div class="frame" id="register-y">
+									<div class="address">Y</div>
+									<div class="value">00</div>
+								</div>
+								<div class="frame" id="register-pc">
+									<div class="address">PC</div>
+									<div class="value">00</div>
+								</div>
+								<div class="frame" id="register-sp">
+									<div class="address">SP</div>
+									<div class="value">00</div>
+								</div>
+							</div>
+							
+							<div class="debugger">
+								<input type="checkbox" class="debug" name="debug" />
+								<label for="debug">Debugger</label>
+								<!-- <div class="minidebugger"></div> -->
+								<div class="buttons">
+									<input type="button" value="Step" class="stepButton" />
+									<input type="button" value="Jump to" class="gotoButton" />
+								</div>
+							</div>
+						</div>
 
-	<script>
-		$(document).ready(function () {
-            
-            
-            function storageAvailable(type) {
-	try {
-		var storage = window[type],
-			x = '__storage_test__';
-		storage.setItem(x, x);
-		storage.removeItem(x);
-		return true;
-	}
-	catch(e) {
-		return false;
-	}
-}
+			            <div class="half">
+							<div class="stack">
+								<div class="frame">
+									<div class="address">0x01FF</div>
+									<div class="value">01</div>
+								</div>
+								<div class="frame">
+									<div class="address">0x01FE</div>
+									<div class="value">08</div>
+								</div>
+								<div class="frame">
+									<div class="address">0x01FD</div>
+									<div class="value">12</div>
+								</div>
+								<div class="frame">
+									<div class="address">0x01FC</div>
+									<div class="value">04</div>
+								</div>
+								<div class="frame">
+									<div class="address">0x01FB</div>
+									<div class="value">20</div>
+								</div>
+								<div class="frame">
+									<div class="address">0x01FA</div>
+									<div class="value">00</div>
+								</div>
+								<div class="frame">
+									<div class="address">0x01F9</div>
+									<div class="value">65</div>
+								</div>
+								<div class="frame">
+									<div class="address">0x01F8</div>
+									<div class="value">02</div>
+								</div>
+								<div class="frame">
+									<div class="address sp">0x01F7 <img src="images/icons/forward.png"></div>
+									<div class="value">00</div>
+								</div>
+								<div class="frame">
+									<div class="address">0x01F6</div>
+									<div class="value">00</div>
+								</div>
+								<div class="frame">
+									<div class="address">0x01F5</div>
+									<div class="value">00</div>
+								</div>
+								<div class="frame">
+									<div class="address">0x01F4</div>
+									<div class="value">00</div>
+								</div>
+								<div class="frame">
+									<div class="address">0x01F3</div>
+									<div class="value">00</div>
+								</div>
+								<div class="frame">
+									<div class="address">0x01F2</div>
+									<div class="value">00</div>
+								</div>
+								<div class="frame">
+									<div class="address">0x01F1</div>
+									<div class="value">00</div>
+								</div>
+								<div class="frame">
+									<div class="address">0x01F0</div>
+									<div class="value">00</div>
+								</div>
+								<div class="frame">
+									<div class="address">0x01EF</div>
+									<div class="value">00</div>
+								</div>
+								<div class="frame">
+									<div class="address">0x01EE</div>
+									<div class="value">00</div>
+								</div>
+								<div class="frame">
+									<div class="address">0x01ED</div>
+									<div class="value">00</div>
+								</div>
+								<div class="frame">
+									<div class="address">0x01EC</div>
+									<div class="value">00</div>
+								</div>
+								<div class="frame">
+									<div class="address">0x01EB</div>
+									<div class="value">00</div>
+								</div>
+								<div class="frame">
+									<div class="address">0x01EA</div>
+									<div class="value">00</div>
+								</div>
+								<div class="frame">
+									<div class="address">0x01E9</div>
+									<div class="value">00</div>
+								</div>
+								<div class="frame">
+									<div class="address">0x01E8</div>
+									<div class="value">00</div>
+								</div>
+								<div class="frame">
+									<div class="address">0x01E7</div>
+									<div class="value">00</div>
+								</div>
+								<div class="frame">
+									<div class="address">0x01E6</div>
+									<div class="value">00</div>
+								</div>
+								<div class="frame">
+									<div class="address">0x01E5</div>
+									<div class="value">00</div>
+								</div>
+							</div>
 
-			
-			var client = new WindowsAzure.MobileServiceClient(
-    "https://ide6502.azure-mobile.net/",
-    "QekgXgsjXlzmhYhjfEhxyySyblCoHg86"
-);
-				function refreshAuthDisplay() {
-    var isLoggedIn = client.currentUser !== null;
-    $("#logged-in").toggle(isLoggedIn);
-    $("#logged-out").toggle(!isLoggedIn);
+							<div class="monitorControls">
+								<label for="length">Length of Stack</label>
+								<input type="text" value="$20" class="length" name="length">
+							</div>
+						<br><br><br>
+						</div>
+						<!--- halves close -->
+						<div class="buttons action-button-container">
+							<input class="button-offset"></input>
+							<!-- <input type="button" value="Stack" class="displayStackButton"> <!-- Print stack to Console --> 
+							<input type="button" value="Hexdump" class="displayHexdumpButton" onclick="showConsole();"> <!-- Print hexdump to Console -->
+							<!-- <input type="button" value="Registers" class="displayRegistersButton"> <!-- Print registers to Console --> 
+							<input type="button" value="Disassemble" class="displayDisassembleButton" onclick="showConsole();"> <!-- Print diassembled program to console -->
+							<input class="button-offset"></input>
+		                </div>
+						<center>
+		                	<button onclick="showDocumentation()" style="width: 345px;">Read the Documentation</button>
+						</center>
 
-    if (isLoggedIn) {
-        if (storageAvailable('localStorage')) {
-           
-	       localStorage.setItem('id', client.currentUser.clientId.replace("Google:",""));
-           window.location.href = ("http://6502.azurewebsites.net/frontend/index.html");
-        }
-        else {
-            $("#login-name").text("UPGRADE TO HTML5");
-        }
-    }
-}
+					</div>
 
-function logIn() {
-    client.login("google").then(refreshAuthDisplay, function(error){
-        alert(error);
-    });
-	
-
-}
-
-function logOut() {
-    client.logout();
-    refreshAuthDisplay();
-    $('#summary').html('<strong>You must login to access data.</strong>');
-}
-
-// On page init, fetch the data and set up event handlers
-$(function () {
-    refreshAuthDisplay();
-    $('#summary').html('<strong>You must login to access data.</strong>');          
-    $("#logged-out button").click(logIn);
-    $("#logged-in button").click(logOut);
-});
+                  <!-- <div class="monitor"><pre><code></code></pre></div>
+                  <div class="messages"><pre><code></code></pre></div> -->
+            </div>
+		</section>
+		<script type="text/javascript" src="js/jquery.min.js"></script>
+		<!-- <script type="text/javascript" src="js/highlighter.js"></script> -->
+		<script type="text/javascript" src="js/jquery.linedtextarea.js"></script>
+		<script type="text/javascript">
+			$(document).ready(function() {
+				console.log("Code Panel initialized");
+				$("#code-textarea").linedtextarea();	
 			});
-	</script>
-	
-	
-</body>
+        </script>
+        <script type="text/javascript">
+        	function showDocumentation() {
+        		setTimeout(function(){ 
+        			$('#widgets').addClass('display-none');
+        			$('#documentation').removeClass('visible-none');
+			    }, 175);  
 
+        		$('#widgets').addClass('visible-none');
+        		$('#documentation').removeClass('display-none');
+        	}
+
+        	function hideDocumentation() {
+        		setTimeout(function(){ 
+        			$('#documentation').addClass('display-none');
+        			$('#widgets').removeClass('visible-none');
+			    }, 175);  
+
+        		$('#documentation').addClass('visible-none');
+        		$('#widgets').removeClass('display-none');	
+        	}
+        </script>
+        
+        <!-- <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"></script> -->
+		<script src="//www.parsecdn.com/js/parse-1.6.7.min.js"></script>
+        <script src="js/es5-shim.js"></script>
+        <script src="js/assembler.js"></script>
+		<script src="js/filehandler.js"></script>
+        <script type="text/javascript" src="js/console.js"></script>
+		
+
+	</body>
 </html>
