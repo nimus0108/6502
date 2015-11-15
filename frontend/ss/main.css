@@ -325,7 +325,7 @@ section.code div.code-data {
   height: calc(100% - 75px);
   font-size: 1.125em;
   line-height: 1.8;
-  overflow-y: scroll;
+  padding: 0;
   -webkit-box-shadow: inset 5px 0px 10px 0px rgba(0, 0, 0, 0.33), inset -5px 0px 10px 0px rgba(0, 0, 0, 0.33);
   -moz-box-shadow: inset 5px 0px 10px 0px rgba(0, 0, 0, 0.33), inset -5px 0px 10px 0px rgba(0, 0, 0, 0.33);
   box-shadow: inset 5px 0px 10px 0px rgba(0, 0, 0, 0.33), inset -5px 0px 10px 0px rgba(0, 0, 0, 0.33); }
@@ -364,6 +364,7 @@ section.code div.code-text {
   section.code div.code-text textarea.code1 {
     width: 100%;
     height: 100%;
+    padding: 0;
     background: none;
     color: #eee;
     line-height: 2 !important;
@@ -372,6 +373,7 @@ section.code div.code-text {
     text-align: left;
     font-size: 0.9375em;
     overflow: hidden;
+    overflow-y: scroll;
     resize: none; }
 
 /* File System */
@@ -447,13 +449,6 @@ section.folder {
 
 .top-square {
   padding-top: 35px; }
-
-canvas.screen {
-  display: block;
-  width: 14.2857143vw;
-  height: 14.2857143vw;
-  margin: 0 auto 25px;
-}
 
 .stack {
   min-width: 250px;

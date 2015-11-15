@@ -36,7 +36,7 @@ section.code {
 		height: calc(100% - 75px);
 		font-size: em(18px);
 		line-height: 1.8;
-		overflow-y: scroll;
+		padding: 0;
 
 		-webkit-box-shadow: inset 5px 0px 10px 0px rgba(0,0,0,0.33), inset -5px 0px 10px 0px rgba(0,0,0,0.33);
 		-moz-box-shadow: inset 5px 0px 10px 0px rgba(0,0,0,0.33), inset -5px 0px 10px 0px rgba(0,0,0,0.33);
@@ -76,7 +76,6 @@ section.code {
 		height: calc(100% - 50px);
 		margin: 0;
 		padding: 0;
-		// padding: 20px 0 0 15px;
 
 		.lines, .linedtextarea {
 			height: 100%;
@@ -85,6 +84,7 @@ section.code {
 		textarea.code1 {
 			width: 100%;
 			height: 100%;
+			padding: 0;
 			background: none;
 			color: $color-gallery;
 			line-height: 2 !important;
@@ -93,6 +93,7 @@ section.code {
 			text-align: left;
 			font-size: em(15px);
 			overflow: hidden;
+			overflow-y: scroll;
 			resize: none;
 		}
 	}
