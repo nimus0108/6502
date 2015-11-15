@@ -2,6 +2,22 @@
 	@include span-columns(7);
 }
 
+.third {
+  float: left;
+  display: block;
+  margin-right: 0%;
+  width: 30%; }
+  .half:last-child {
+    margin-right: 0; }
+
+.two-thirds {
+  float: left;
+  display: block;
+  margin-right: 0%;
+  width: 70%; }
+  .half:last-child {
+    margin-right: 0; }
+
 .top-square {
 	padding-top: 35px;
 }
