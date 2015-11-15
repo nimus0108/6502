@@ -2690,7 +2690,8 @@ function SimulatorWidget(node) {
         instructions.push(inst);
         currentAddress++;
       }
-      var html = "";
+      var html = 'Address  Hexdump   Dissassembly\n';
+      html +=    '-------------------------------\n';
       html += instructions.join('\n');
       return(html);
     }
@@ -2768,11 +2769,11 @@ function SimulatorWidget(node) {
       }
       function displayHexdumpButton(){
           var dump = memory.format(0x600, assembler.getCodeLen());
-          console.log(dump)
+          ("<div>"+dump+"</div>").insertBefore("#closeConsoleButton");
       }
       function displayDisassembleButton(){
           var disassembled = assembler.customDisassemble();
-          console.log(disassembled)
+          $("<div>"+disassembled+"</div>").insertBefore("#closeConsoleButton");
       }
     return {
       displayStackButton: displayStackButton,
