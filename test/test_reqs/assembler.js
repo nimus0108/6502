@@ -55,6 +55,8 @@ function SimulatorWidget(node) {
     $node.find('.notesButton').click(ui.showNotes);
     $node.find('.displayStackButton').click(ourCode.displayStackButton);
     $node.find('.displayRegistersButton').click(ourCode.displayRegistersButton);
+    $node.find('.displayHexdumpButton').click(ourCode.displayHexdumpButton);
+    $node.find('.displayDisassembleButton').click(ourCode.displayDisassembleButton);
       
       
     var editor = $node.find('.code');
@@ -2633,6 +2635,10 @@ function SimulatorWidget(node) {
       html += instructions.join('\n');
       openPopup(html, 'Disassembly');
     }
+    
+    function getCodeLen() {
+      return codeLen;
+    }
 
     return {
       assembleLine: assembleLine,
@@ -2641,7 +2647,8 @@ function SimulatorWidget(node) {
         return defaultCodePC;
       },
       hexdump: hexdump,
-      disassemble: disassemble
+      disassemble: disassemble,
+      getCodeLen: getCodeLen
     };
   }
 
@@ -2685,7 +2692,8 @@ function SimulatorWidget(node) {
           console.log(simulator.getX());
       }
       function displayHexdumpButton(){
-          
+          var dump = memory.format(0x600, assembler.getCodeLen());
+          console.log(dump)
       }
       function displayDisassembleButton(){
           
