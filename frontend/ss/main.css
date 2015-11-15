@@ -1,5 +1,5 @@
 /*! normalize.css v3.0.2 | MIT License | git.io/normalize */
-@import url(https://fonts.googleapis.com/css?family=Open+Sans:300,400,400italic|Raleway:400,300);
+@import url(https://fonts.googleapis.com/css?family=Source+Code+Pro);
 img, legend {
   border: 0; }
 
@@ -151,7 +151,7 @@ section {
   section header h1 {
     color: #fdfdfd;
     margin: 0 auto 0.1875em;
-    font-family: "Source Sans Pro", "Consolas", sans-serif;
+    font-family: "Source Code Pro", "Consolas", sans-serif;
     font-size: 2.25em;
     text-align: center; }
 
@@ -172,7 +172,7 @@ html {
 
 body {
   color: #1d1d1d;
-  font-family: "Source Sans Pro", "Consolas", sans-serif;
+  font-family: "Source Code Pro", "Consolas", sans-serif;
   font-size: 1.25em;
   font-weight: 300;
   line-height: 1.25; }
@@ -196,14 +196,14 @@ h {
   font-size: 0.75em; }
 
 h1, h2, h3, h4, h5, h6 {
-  font-family: "Source Sans Pro", "Consolas", sans-serif;
+  font-family: "Source Code Pro", "Consolas", sans-serif;
   font-weight: 300;
   line-height: 1.25;
   margin: 0 0 0.625em;
   padding: 0; }
 
 p {
-  font-family: "Source Sans Pro", "Consolas", sans-serif;
+  font-family: "Source Code Pro", "Consolas", sans-serif;
   font-size: 1.125em;
   font-weight: 400;
   line-height: 1.8; }
@@ -222,6 +222,8 @@ button, .button, .monitorControls input, .debugger input[type="button"], .button
   padding: 12px 12px;
   background: rgba(255, 255, 255, 0.1);
   color: #fdfdfd;
+  font-family: "Proxima Nova", "Open Sans", sans-serif;
+  font-weight: 300;
   border: none;
   border-radius: 0px;
   outline: none;
@@ -307,6 +309,8 @@ section.code div.file-title {
   background: rgba(255, 255, 255, 0.15); }
   section.code div.file-title .file-name {
     color: #eee;
+    font-family: "Proxima Nova", "Open Sans", sans-serif;
+    font-weight: 300;
     font-size: 1em;
     text-align: center;
     line-height: 75px; }
@@ -388,7 +392,9 @@ section.folder {
     section.folder div.header h1.title {
       font-size: 1.5em;
       margin: 0 30px;
-      line-height: 75px; }
+      line-height: 75px;
+      font-family: "Proxima Nova", "Open Sans", sans-serif;
+      font-weight: 300; }
   section.folder div.files {
     width: 100%;
     height: calc(100% - 75px);
@@ -396,7 +402,9 @@ section.folder {
     padding: 20px 0; }
     section.folder div.files h2.file-header {
       font-size: 1.125em;
-      margin-left: 30px; }
+      margin-left: 30px;
+      font-family: "Proxima Nova", "Open Sans", sans-serif;
+      font-weight: 300; }
     section.folder div.files ul.your-files {
       list-style: none;
       margin: 0;
@@ -404,7 +412,9 @@ section.folder {
       section.folder div.files ul.your-files li.file {
         font-size: 1em;
         line-height: 2.5;
-        padding: 0 30px; }
+        padding: 0 30px;
+        font-family: "Proxima Nova", "Open Sans", sans-serif;
+        font-weight: 300; }
         section.folder div.files ul.your-files li.file a {
           color: #fdfdfd;
           text-decoration: none; }
@@ -592,10 +602,9 @@ canvas.screen {
     margin-right: 0; }
 
 .action-button-container {
-  position: relative;
-  top: 40px;
   width: 100%;
-  margin: auto; }
+  margin: auto;
+  margin-top: 40px; }
   .action-button-container .button-offset {
     float: left;
     display: block;

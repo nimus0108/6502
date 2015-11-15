@@ -190,10 +190,9 @@ $grid-columns: 12;
 }
 
 .action-button-container {
-	position: relative;
-	top: 40px;
 	width: 100%;
 	margin: auto;
+	margin-top: 40px;
 	
 	.button-offset {
 		@include span-columns(3);
