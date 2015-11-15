@@ -34,7 +34,7 @@
     $("#logged-out").toggle(!isLoggedIn);
 
     if (isLoggedIn) {
-        $("#login-name").text(client.currentUser.userId);
+        console.log(client.currentUser.userId);
         refreshTodoItems();
     }
 }
@@ -44,9 +44,7 @@ function logIn() {
         alert(error);
     });
 	
-	if (client.currentUser !== null) {
-		console.log('kkkkkkkkk');
-	}
+
 }
 
 function logOut() {
