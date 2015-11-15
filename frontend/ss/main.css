@@ -574,7 +574,10 @@ div.console-visible {
 .console {
   width: 100%;
   height: 35%;
-  background: rgba(255, 255, 255, 0.15); }
+  background: rgba(255, 255, 255, 0.15);
+  color: #fdfdfd;
+  padding: 50px 0;
+  overflow-y: scroll; }
 
 .console-show {
   display: block; }
