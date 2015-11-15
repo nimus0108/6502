@@ -1,0 +1,20 @@
+/* Scrollbar */
+
+::-webkit-scrollbar {
+	width: 12px;
+	margin-right: 10px;
+}
+
+::-webkit-scrollbar-button { }
+
+::-webkit-scrollbar-track {
+	background: $color-space;
+}
+::-webkit-scrollbar-track-piece  {  }
+
+::-webkit-scrollbar-thumb {
+	background: $color-nevada;
+}
+
+::-webkit-scrollbar-corner       {  }
+::-webkit-resizer                {  }

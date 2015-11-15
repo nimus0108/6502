@@ -2,6 +2,7 @@ html, body {
 	@include full-screen;
 	min-height: 100%;
 	background-color: $color-outerspace;
+	overflow: hidden;
 }
 
 section {
