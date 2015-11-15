@@ -1,0 +1,76 @@
+define x 	   $02
+define ans_addr	   $00
+define temp_addr   $02
+
+main:
+	LDA #x
+	PHA 
+	JSR b
+	PLA 			
+	STA ans_addr
+	BRK
+	
+;
+;
+; b(x) = a(x+2) + a(x+1)
+;
+b:
+	TSX
+	TXA
+	CLC
+	ADC #$03
+	TAY
+	LDA $0100, Y
+
+	ADC #$01	
+	PHA
+	JSR a
+
+	TSX
+	TXA
+	CLC
+	ADC #$04
+	TAY
+	LDA $0100, Y
+		
+	ADC #$02   
+	PHA
+
+	JSR a
+	
+	PLA			
+	STA temp_addr   
+	PLA			
+	ADC temp_addr
+	STA temp_addr
+
+	TSX
+	TXA
+	CLC
+	ADC #$03
+	TAY
+
+	LDA temp_addr
+	STA $0100, Y
+
+	RTS
+
+;
+;
+; a(x) = 2x + 3
+;
+a:
+	TSX
+	TXA
+	CLC
+	ADC #$03
+	TAY
+	LDA $0100, Y
+	STA temp_addr
+	ADC temp_addr
+	ADC #$03
+	STA $0100, Y
+	RTS
+
+
+
