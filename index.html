@@ -50,6 +50,7 @@
 
     if (isLoggedIn) {
         if (storageAvailable('localStorage')) {
+            console.log("fuck you");
 	       localStorage.setItem('id', client.currentUser.clientId.replace("Google:",""));
         }
         else {
