@@ -4,6 +4,10 @@
 		<title>HackRPI 2015</title>
 		<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
         
+
+        <script type="text/javascript" src="codemirror/codemirror.js"></script>
+        <link rel="stylesheet" type="text/css" href="codemirror/codemirror.css">
+        <script type="text/javascript" src="codemirror/mode/javascript/javascript.js"></script>
 		<!-- Styles -->
         <link href="ss/main.css" rel="stylesheet">
 	</head>
@@ -16,36 +20,52 @@
 					<img class="exit" src="images/icons/delete.png"></img>
 				</div>
 				<div class="code-data">
-					<div class="lines">
+					<textarea id="code6502"></textarea>
+					<!-- <div class="lines">
 						<ul class="line-container">
 							<li class="line">1</li>
 						</ul>
 					</div>
 					<div class="code-text">
 						<textarea id="code6502" onkeypress="auto_grow(this, event)"></textarea>
-					</div>
+					</div> -->
 				</div>
 			</section>
 			<section class="display panel"></section>
 		</div>
 		<script type="text/javascript" src="js/jquery.min.js"></script>
 		<script type="text/javascript">
-			var lineNumber = 2;
+			// var myCodeMirror = CodeMirror($('#code-data'));
+			// var editor = CodeMirror.fromTextArea($('#code6502'), {
+			//     lineNumbers: true
+			//   });
+			$(document).ready(function() {
+				var editor = CodeMirror.fromTextArea($('#code6502')[0], {
+				  height: "150px",
+				  path: "codemirror/js/",
+				  textWrapping: true,
+				  lineNumbers: true
+				});
+			});
+		</script>
 
-			function addLine() {
-				$('.line-container').append('<li class="line">' + lineNumber + '</li>');
-				console.log(lineNumber);
-				lineNumber++;
-	        }
+		// <script type="text/javascript">
+		// 	var lineNumber = 2;
 
-			function auto_grow(element, event) {
-	            element.style.height = "5px";
-	            element.style.height = (element.scrollHeight + 20) + "px";
-	            console.log(event.keyCode);
-	            if (event.keyCode == 13) {
-	            	addLine();
-	            }
-	        }
-        </script>
+		// 	function addLine() {
+		// 		$('.line-container').append('<li class="line">' + lineNumber + '</li>');
+		// 		console.log(lineNumber);
+		// 		lineNumber++;
+	 //        }
+
+		// 	function auto_grow(element, event) {
+	 //            element.style.height = "5px";
+	 //            element.style.height = (element.scrollHeight + 20) + "px";
+	 //            console.log(event.keyCode);
+	 //            if (event.keyCode == 13) {
+	 //            	addLine();
+	 //            }
+	 //        }
+  //       </script>
 	</body>
 </html>
