@@ -5,6 +5,8 @@
 		<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
 		<link rel="icon" href="images/icons/favicon.ico" type="image/x-icon">
 		<link rel="shortcut icon" href="images/icons/favicon.ico" type="image/x-icon">
+
+		<link rel="stylesheet" type="text/css" href="js/jquery.linedtextarea.css">
         
 <!--
 
@@ -65,13 +67,8 @@
 					<input type="button" value="Reset" class="resetButton" />
 				</div>
 				<div class="code-data">
-					<div class="lines">
-						<ul class="line-container">
-							<li class="line">1</li>
-						</ul>
-					</div>
 					<div class="code-text">
-						<textarea class="code1" onkeypress="auto_grow(this, event)">LDA #$01
+						<textarea class="code1" id="code-textarea">LDA #$01
 						STA $0200
 						LDA #$05
 						STA $0201
@@ -258,7 +255,8 @@
             </div>
 		</section>
 		<script type="text/javascript" src="js/jquery.min.js"></script>
-		<script type="text/javascript" src="js/highlighter.js"></script>
+		<!-- <script type="text/javascript" src="js/highlighter.js"></script> -->
+		<script type="text/javascript" src="js/jquery.linedtextarea.js"></script>
 		<script type="text/javascript">
 			// var myCodeMirror = CodeMirror($('#code-data'));
 			// var editor = CodeMirror.fromTextArea($('#code6502'), {
@@ -276,25 +274,39 @@
 		</script>
 
 		<script type="text/javascript">
-			var lineNumber = 2;
+		$( document ).ready(function() {
+			console.log( "ready!" );
+				$("#code-textarea").linedtextarea();	
+		});
+			// $(function() {
+			// });
+			// var lineNumber = 2;
 
-			function addLine() {
-				$('.line-container').append('<li class="line">' + lineNumber + '</li>');
-				console.log(lineNumber);
-				lineNumber++;
-	        }
+			// function countLines(theArea) {
+			// 	$('.line-container').innerHTML = "";
+			// 	for (var linenum = 1; linenum <= theArea.value.match(/\n/g).length + 1; linenum++) {
+			// 		console.log(linenum);
+			// 		$('.line-container').append('<li class="line">' + linenum+ '</li>');
+			// 	}
+			// }
 
-			function auto_grow(element, event) {
-	            element.style.height = "5px";
-	            element.style.height = (element.scrollHeight + 20) + "px";
-	            console.log(event.keyCode);
-	            if (event.keyCode == 13) {
-	            	addLine();
-	            }
-	        }
+			// function addLine() {
+			// 	$('.line-container').append('<li class="line">' + lineNumber + '</li>');
+			// 	console.log(lineNumber);
+			// 	lineNumber++;
+	  //       }
+
+			// function auto_grow(element, event) {
+	  //           element.style.height = "5px";
+	  //           element.style.height = (element.scrollHeight + 20) + "px";
+	  //           console.log(event.keyCode);
+	  //           if (event.keyCode == 13) {
+	  //           	addLine();
+	  //           }
+	  //       }
         </script>
         
-        <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"></script>
+        <!-- <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"></script> -->
         <script src="js/es5-shim.js"></script>
         <script src="js/assembler.js"></script>
         <script type="text/javascript" src="js/console.js"></script>
