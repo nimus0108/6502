@@ -19,36 +19,10 @@
 					<div class="lines">
 						<ul class="line-container">
 							<li class="line">1</li>
-							<li class="line">2</li>
-							<li class="line">3</li>
-							<li class="line">4</li>
-							<li class="line">5</li>
-							<li class="line">6</li>
-							<li class="line">7</li>
-							<li class="line">8</li>
-							<li class="line">9</li>
-							<li class="line">1</li>
-							<li class="line">2</li>
-							<li class="line">3</li>
-							<li class="line">4</li>
-							<li class="line">5</li>
-							<li class="line">6</li>
-							<li class="line">7</li>
-							<li class="line">8</li>
-							<li class="line">9</li>
-							<li class="line">1</li>
-							<li class="line">2</li>
-							<li class="line">3</li>
-							<li class="line">4</li>
-							<li class="line">5</li>
-							<li class="line">6</li>
-							<li class="line">7</li>
-							<li class="line">8</li>
-							<li class="line">9</li>
 						</ul>
 					</div>
 					<div class="code-text">
-						<textarea id="code6502" onkeyup="auto_grow(this)"></textarea>
+						<textarea id="code6502" onkeypress="auto_grow(this, event)"></textarea>
 					</div>
 				</div>
 			</section>
@@ -56,9 +30,21 @@
 		</div>
 		<script type="text/javascript" src="js/jquery.min.js"></script>
 		<script type="text/javascript">
-			function auto_grow(element) {
+			var lineNumber = 2;
+
+			function addLine() {
+				$('.line-container').append('<li class="line">' + lineNumber + '</li>');
+				console.log(lineNumber);
+				lineNumber++;
+	        }
+
+			function auto_grow(element, event) {
 	            element.style.height = "5px";
 	            element.style.height = (element.scrollHeight + 20) + "px";
+	            console.log(event.keyCode);
+	            if (event.keyCode == 13) {
+	            	addLine();
+	            }
 	        }
         </script>
 	</body>

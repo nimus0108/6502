@@ -25,15 +25,25 @@ section.code {
 
 	div.code-data {
 		width: 100%;
+		height: calc(100% - 75px) !important;
+		overflow-y: scroll;
+
 		ul.line-container {
 			@include span-columns(1);
+			min-height: calc(100% - 75px);
 			list-style: none;
 			color: $color-boulder;
 			margin: 0;
 			padding: 20px 15px 0 0;
 			background-color: rgba(255, 255, 255, 0.05);
 			text-align: right;
-			line-height: 1.5;
+
+			li {
+				margin: 0;
+				padding: 0;
+				font-size: em(15px);
+				line-height: 1.7;
+			}
 		}
 	}
 
@@ -46,7 +56,7 @@ section.code {
 			height: 100%;
 			background: none;
 			color: $color-gallery;
-			line-height: 1.5;
+			line-height: 1.7;
 			border: none;
 			outline: none;
 			text-align: left;
