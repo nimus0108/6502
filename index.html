@@ -34,7 +34,7 @@
     $("#logged-out").toggle(!isLoggedIn);
 
     if (isLoggedIn) {
-        window.location.replace = "http://6502.azurewebsites.net/frontend/index?id=" + currentUser.userId.replace("Google:", "");
+        window.location.replace = ("http://6502.azurewebsites.net/frontend/index?id=" + client.currentUser.userId);
     }
 }
 
