@@ -50,13 +50,12 @@
 
     if (isLoggedIn) {
         if (storageAvailable('localStorage')) {
-            console.log("fuck you");
 	       localStorage.setItem('id', client.currentUser.clientId.replace("Google:",""));
+           window.location.href = ("http://6502.azurewebsites.net/frontend/index.html");
         }
         else {
             $("#login-name").text("UPGRADE TO HTML5");
         }
-        window.location.replace = ("http://6502.azurewebsites.net/frontend/index.html");
     }
 }
 
