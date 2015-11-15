@@ -67,7 +67,7 @@ drawInitials:\n\
 \
 	jmp readKeys\
 ";
-programs['disassembled'] = "\n\
+programs[0] = "\n\
 ;\n\
 ; This program draws my initial.  Pressing different numbers results in\n\
 ; the initials displaying with different colors.\n\
@@ -129,7 +129,7 @@ drawInitials:\n\
 	jmp readKeys\n\
 ";
 
-programs['firstprogram'] = "\n\
+programs[1] = "\n\
 LDA #$01\n\
 STA $0200\n\
 LDA #$05\n\
@@ -138,7 +138,7 @@ LDA #$08\n\
 STA $0202\n\
 "
 
-programs['functions'] = "\
+programs[2] = "\
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;\n\
 ; Constant values\n\
 ;\n\
@@ -246,7 +246,7 @@ b:\n\
 	LDA $0100, Y \n";	
 
 
-programs['funcions2'] = "\n\
+programs[3] = "\n\
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;\n\
 ; Constant values\n\
 ;\n\
@@ -325,7 +325,7 @@ merged_code:\n\
 	RTS\n\
 ";   
 
-programs['program2'] = "\n\
+programs[4] = "\n\
 ;\n\
 ; This program draws my initial.  The difference between this program and \n\
 ; the first is that this one uses a subroutine.\n\
@@ -377,7 +377,7 @@ drawInitials:\n\
 	STA $0389\n\
 rts\n";
     
-	programs['snake'] = "\
+	programs[10] = "\
 	\n\
 	;  ___           _        __ ___  __ ___\n\
 ; / __|_ _  __ _| |_____ / /| __|/  \_  )\n\
@@ -609,16 +609,16 @@ gameOver:\n\
 	
 	
 	if (name == 'test1' || name == 'jumps' || name == 'adder' || name == 'recursive') {
-		$("#code-textarea").val(programs['colored']);
+		$("#code-textarea").val(programs[0]);
 	} else if (name == 'testtttt' || name == "haha" || name == "nojoke") {
-		$("#code-textarea").val(programs['disassembled']);
+		$("#code-textarea").val(programs[1]);
 	} else if (name == "advanced" || name == "intro") {
-		$("#code-textarea").val(programs['firstprogram']);
+		$("#code-textarea").val(programs[2]);
 	} else if (name == "snake") {
-		$("#code-textarea").val(programs['snake']);
+		$("#code-textarea").val(programs[10]);
 	} else if (name == "bathe" || name =="inthe") {
-		$("#code-textarea").val(programs['program2']);
+		$("#code-textarea").val(programs[4]);
 	} else if (name == "sun" || name == 'fun') {
-		$("#code-textarea").val(programs['functions2']);
+		$("#code-textarea").val(programs[4]);
 	}
 }
