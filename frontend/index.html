@@ -41,22 +41,22 @@
                     <input type="button" value="Run" class="runButton" />
                     <input type="button" value="Reset" class="resetButton" />
                   </div>
-					<textarea class="code1">
-LDA #$01
-STA $0200
-LDA #$05
-STA $0201
-LDA #$08
-STA $0202
-					</textarea>
-					<!-- <div class="lines">
-						<ul class="line-container">
-							<li class="line">1</li>
-						</ul>
+					<div class="code-data">
+						<div class="lines">
+							<ul class="line-container">
+								<li class="line">1</li>
+							</ul>
+						</div>
+						<div class="code-text">
+							<textarea class="code1" onkeypress="auto_grow(this, event)">LDA #$01
+							STA $0200
+							LDA #$05
+							STA $0201
+							LDA #$08
+							STA $0202
+							</textarea>
+						</div>
 					</div>
-					<div class="code-text">
-						<textarea id="code6502" onkeypress="auto_grow(this, event)"></textarea>
-					</div> -->
 			</section>
 			<section class="display panel">
 			    <div class="widget">
@@ -249,28 +249,28 @@ STA $0202
 //			});
 		</script>
 
-		// <script type="text/javascript">
-		// 	var lineNumber = 2;
+		<script type="text/javascript">
+			var lineNumber = 2;
 
-		// 	function addLine() {
-		// 		$('.line-container').append('<li class="line">' + lineNumber + '</li>');
-		// 		console.log(lineNumber);
-		// 		lineNumber++;
-	 //        }
+			function addLine() {
+				$('.line-container').append('<li class="line">' + lineNumber + '</li>');
+				console.log(lineNumber);
+				lineNumber++;
+	        }
 
-		// 	function auto_grow(element, event) {
-	 //            element.style.height = "5px";
-	 //            element.style.height = (element.scrollHeight + 20) + "px";
-	 //            console.log(event.keyCode);
-	 //            if (event.keyCode == 13) {
-	 //            	addLine();
-	 //            }
-	 //        }
-  //       </script>
+			function auto_grow(element, event) {
+	            element.style.height = "5px";
+	            element.style.height = (element.scrollHeight + 20) + "px";
+	            console.log(event.keyCode);
+	            if (event.keyCode == 13) {
+	            	addLine();
+	            }
+	        }
+        </script>
            
-            <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"></script>
-            <script src="js/es5-shim.js"></script>
-            <script src="js/assembler.js"></script>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"></script>
+        <script src="js/es5-shim.js"></script>
+        <script src="js/assembler.js"></script>
 
 	</body>
 </html>
