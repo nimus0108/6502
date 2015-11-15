@@ -2728,6 +2728,7 @@ function SimulatorWidget(node) {
       function displayStackButton(){
         var stack = [];
         var length = $node.find('.length').val();
+        length = length.replace('$','');
         length = parseInt("0x" + length);
         //store in array stack
         for (var i=0x01ff; i>(0x01ff - length); i--){
