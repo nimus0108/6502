@@ -2747,11 +2747,11 @@ function SimulatorWidget(node) {
           var sp = simulator.getSP();
           var pc = simulator.getPC();
           
-          console.log(x);
-          console.log(y);
-          console.log(a);
-          console.log(sp);
-          console.log(pc);
+          $("#register-x .value").text(x);
+          $("#register-y .value").text(y);
+          $("#register-a .value").text(a);
+          $("#register-sp .value").text(sp);
+          $("#register-pc .value").text(pc);
       }
       function displayHexdumpButton(){
           var dump = memory.format(0x600, assembler.getCodeLen());
