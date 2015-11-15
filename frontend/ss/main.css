@@ -422,6 +422,22 @@ section.folder {
   .half:last-child {
     margin-right: 0; }
 
+.third {
+  float: left;
+  display: block;
+  margin-right: 0%;
+  width: 30%; }
+  .half:last-child {
+    margin-right: 0; }
+
+.two-thirds {
+  float: left;
+  display: block;
+  margin-right: 0%;
+  width: 70%; }
+  .half:last-child {
+    margin-right: 0; }
+
 .top-square {
   padding-top: 35px; }
 
@@ -538,7 +554,8 @@ canvas.screen {
   display: block;
   margin-right: 0%;
   width: 33.33333%;
-  margin: 0; }
+  margin: 0; 
+}
   .buttons input:last-child {
     margin-right: 0; }
 
