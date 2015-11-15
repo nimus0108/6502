@@ -2745,6 +2745,10 @@ function SimulatorWidget(node) {
           var pc = simulator.getPC();
           
           console.log(x);
+          console.log(y);
+          console.log(a);
+          console.log(sp);
+          console.log(pc);
       }
       function displayHexdumpButton(){
           var dump = memory.format(0x600, assembler.getCodeLen());

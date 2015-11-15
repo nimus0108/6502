@@ -141,7 +141,8 @@ html, body {
   margin: 0;
   height: 0;
   min-height: 100%;
-  background-color: #333a3d; }
+  background-color: #333a3d;
+  overflow: hidden; }
 
 section {
   width: 100%;
@@ -319,41 +320,16 @@ section.code div.file-title {
     position: absolute;
     top: 29px;
     right: calc(35.7142857% + 25px); }
-section.code div.code-data {
-  width: 100%; }
-  section.code div.code-data ul.line-container {
-    float: left;
-    display: block;
-    margin-right: 0%;
-    width: 7.14286%;
-    list-style: none;
-    color: #777;
-    margin: 0;
-    padding: 20px 15px 0 0;
-    background-color: rgba(255, 255, 255, 0.05);
-    text-align: right;
-    line-height: 1.5; }
-    section.code div.code-data ul.line-container:last-child {
-      margin-right: 0; }
-section.code div.code-text {
-  float: left;
-  display: block;
-  margin-right: 0%;
-  width: 92.85714%;
-  padding: 20px 0 0 15px; }
-  section.code div.code-text:last-child {
-    margin-right: 0; }
-  section.code div.code-text textarea#code6502 {
-    width: 100%;
-    height: 100%;
-    background: none;
-    color: #eee;
-    line-height: 1.5;
-    border: none;
-    outline: none;
-    text-align: left;
-    font-size: 0.9375em;
-    overflow: hidden;
-    resize: none; }
+
+/* Scrollbar */
+::-webkit-scrollbar {
+  width: 12px;
+  margin-right: 10px; }
+
+::-webkit-scrollbar-track {
+  background: #3e4649; }
+
+::-webkit-scrollbar-thumb {
+  background: #596466; }
 
 /*# sourceMappingURL=main.css.map */
