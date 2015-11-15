@@ -3,64 +3,125 @@ console.log(bigDiv);
 
 function displayFile(name) {
     var programs = new Array();
-    programs['colored'] = "\
-; This program draws my initial.  Pressing different numbers results in\
-; the initials displaying with different colors.\
-;\
+    programs['colored'] = "\n\
+; This program draws my initial.  Pressing different numbers results in\n\
+; the initials displaying with different colors.\n\
+;\n\
 
-define ASCII_0      $30	    ; Value for ASCII 0 in hex\
+define ASCII_0      $30	    ; Value for ASCII 0 in hex\n\
 
-; System variables\
-define sysLastKey   $ff\
-define current_char $12\
-define current_digit $13\
+; System variables\n\
+define sysLastKey   $ff\n\
+define current_char $12\n\
+define current_digit $13\n\
 
-readKeys:\
-	lda sysLastKey\
-	sta current_char\
-	SEC\
-	SBC #ASCII_0\
-	sta current_digit\
-	jmp drawInitials\
-	jmp readKeys\
+readKeys:\n\
+	lda sysLastKey\n\
+	sta current_char\n\
+	SEC\n\
+	SBC #ASCII_0\n\
+	sta current_digit\n\
+	jmp drawInitials\n\
+	jmp readKeys\n\
 
-drawInitials:\
-	; Left most vertical bar\
-	STA $0264\
-	STA $0284\
-	STA $02A4\
-	STA $02C4\
-	STA $02E4\
-	STA $0304\
-	STA $0324\
-	STA $0344\
-	STA $0364\
-	STA $0384\
+drawInitials:\n\
+	; Left most vertical bar\n\
+	STA $0264\n\
+	STA $0284\n\
+	STA $02A4\n\
+	STA $02C4\n\
+	STA $02E4\n\
+	STA $0304\n\
+	STA $0324\n\
+	STA $0344\n\
+	STA $0364\n\
+	STA $0384\n\
 
-	; Top Horizontal Section\
-	STA $0265\
-	STA $0266\
-	STA $0267\
-	STA $0268\
+	; Top Horizontal Section\n\
+	STA $0265\n\
+	STA $0266\n\
+	STA $0267\n\
+	STA $0268\n\
 
-	; Right vertical bar\
-	STA $0289\
-	STA $02A9\
-	STA $02C9\
-	STA $02E9\
+	; Right vertical bar\n\
+	STA $0289\n\
+	STA $02A9\n\
+	STA $02C9\n\
+	STA $02E9\n\
 
-	; Bottom Horizontal Section\
-	STA $0308\
-	STA $0307\
-	STA $0306\
-	STA $0305\
+	; Bottom Horizontal Section\n\
+	STA $0308\n\
+	STA $0307\n\
+	STA $0306\n\
+	STA $0305\n\
 
-	; Tail\
-	STA $0326\
-	STA $0347\
-	STA $0368\
-	STA $0389\
+	; Tail\n\
+	STA $0326\n\
+	STA $0347\n\
+	STA $0368\n\
+	STA $0389\n\
 
 	jmp readKeys
-"
+";
+program['disassembled'] = "\n\
+;\n\
+; This program draws my initial.  Pressing different numbers results in\n\
+; the initials displaying with different colors.\n\
+;\n\
+
+define ASCII_0      $30	    ; Value for ASCII 0 in hex\n\
+
+; System variables\n\
+define sysLastKey   $ff\n\
+define current_char $12\n\
+define current_digit $13\n\
+
+readKeys:\n\
+	lda sysLastKey\n\
+	sta current_char\n\
+	SEC\n\
+	SBC #ASCII_0\n\
+	sta current_digit\n\
+	jmp drawInitials\n\
+	jmp readKeys\n\
+
+drawInitials:\n\
+	; Left most vertical bar\n\
+	STA $0264\n\
+	STA $0284\n\
+	STA $02A4\n\
+	STA $02C4\n\
+	STA $02E4\n\
+	STA $0304\n\
+	STA $0324\n\
+	STA $0344\n\
+	STA $0364\n\
+	STA $0384\n\
+
+	; Top Horizontal Section\n\
+	STA $0265\n\
+	STA $0266\n\
+	STA $0267\n\
+	STA $0268\n\
+
+	; Right vertical bar\n\
+	STA $0289\n\
+	STA $02A9\n\
+	STA $02C9\n\
+	STA $02E9\n\
+
+	; Bottom Horizontal Section\n\
+	STA $0308\n\
+	STA $0307\n\
+	STA $0306\n\
+	STA $0305\n\
+
+	; Tail\n\
+	STA $0326\n\
+	STA $0347\n\
+	STA $0368\n\
+	STA $0389\n\
+
+	jmp readKeys\n\
+";
 }
