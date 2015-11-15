@@ -2772,7 +2772,6 @@ function SimulatorWidget(node) {
 $(document).ready(function () {
   $('.widget').each(function () {
     SimulatorWidget(this);
-    SimulatorWidget($())
   });
     
     // SimulatorWidget($('.thecode));

@@ -59,8 +59,10 @@ function SimulatorWidget(node) {
     $node.find('.displayDisassembleButton').click(ourCode.displayDisassembleButton);
       
       
-    var editor = $node.find('.code');
+    var editor = $node.find('.code1');
 
+    console.log(editor);
+      
     editor.on('keypress input', simulator.stop);
     editor.on('keypress input', ui.initialize);
     editor.keydown(ui.captureTabInEditor);
@@ -72,9 +74,9 @@ function SimulatorWidget(node) {
 
   function stripText() {
     //Remove leading and trailing space in textarea
-    var text = $node.find('.code').val();
+    var text = $node.find('.code1').val();
     text = text.replace(/^\n+/, '').replace(/\s+$/, '');
-    $node.find('.code').val(text);
+    $node.find('.code1').val(text);
   }
 
   function UI() {
@@ -1929,7 +1931,7 @@ function SimulatorWidget(node) {
       defaultCodePC = BOOTSTRAP_ADDRESS;
       $node.find('.messages code').empty();
 
-      var code = $node.find('.code').val();
+      var code = $node.find('.code1').val();
       code += "\n\n";
       var lines = code.split("\n");
       codeAssembledOK = true;
