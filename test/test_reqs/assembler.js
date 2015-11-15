@@ -2656,7 +2656,4 @@ $(document).ready(function () {
   $('.widget').each(function () {
     SimulatorWidget(this);
   });
-  
-  ourCode(); // THIS LINE IS OURS
 });
-}
