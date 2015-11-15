@@ -246,14 +246,12 @@ programs['funcions2'] = "\n\
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;\n\
 ; Constant values\n\
 ;\n\
-define n 	   $05		; Input "n" parameter\n\
-
+define n 	   $05		; Input \"n\" parameter\n\
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;\n\
 ; Addresses\n\
 ;\n\
 define ans_addr	   $01   	; Final answer will be stored at $0001. \n\
 define temp_addr   $02		; Temporary values can be stored at $0002.\n\
-
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;\n\
 ; Main Program\n\
 ; -- Push n then y onto the stack\n\
@@ -265,27 +263,24 @@ JSR f\n\
 PLA ; get result\n\
 STA ans_addr\n\
 BRK\n\
-
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;\n\
 ; F(n) = 2 * F(n-1) - 3\n\
 ; F(0) = 4\n\
 ; \n\
 f: \n\
 	;\n\
-	; Load the "n" parameter from SP + 3\n\
+	; Load the \"n\" parameter from SP + 3\n\
 	TSX\n\
 	TXA\n\
 	CLC\n\
 	ADC #$03\n\
 	TAY\n\
 	LDA $0100, Y\n\
-
 	;\n\
 	; Check if n=0.  If so, then implement the base case of our recursion.\n\
 	;\n\
 	CMP #0\n\
 	BEQ base_case\n\
-
 	;\n\
 	; If acc > 0, \n\
 	; then subtract 1 from n and make the recursive call.\n\
@@ -293,29 +288,23 @@ f: \n\
 	SBC #$01\n\
 	PHA \n\
 	JSR f\n\
-
 	;\n\
 	; Pull the result of the subroutine call.  This is the result of f(n-1)\n\
 	PLA \n\
-	
 	; Double the accumulator  (2 * F(n-1))\n\
 	STA temp_addr\n\
 	ADC	temp_addr\n\
-
 	; Subtract the 3 from the accumulator to complete the calculation\n\
 	SEC\n\
 	SBC #$03\n\
 	JMP merged_code\n\
-
 base_case:\n\
 	; If n=0.... F(0) = 4\n\
 	LDA #$04\n\
-
 merged_code:\n\
 	; Store the return value in the temp_addr for safe keeping while\n\
 	; we calculate the return address.\n\
 	STA temp_addr\n\
-
 	;\n\
 	; Calculate the address for the return value.\n\
 	;\n\
@@ -324,16 +313,13 @@ merged_code:\n\
 	CLC\n\
 	ADC #$03\n\
 	TAY\n\
-
 	;\n\
 	; Reload the return value from temp_addr and then write it into the stack\n\
 	;\n\
 	LDA temp_addr\n\
 	STA $0100, Y\n\
-
 	RTS\n\
-    
-"    
+";   
 
 program['program2'] = "\n\
 ;\n\
@@ -341,12 +327,10 @@ program['program2'] = "\n\
 ; the first is that this one uses a subroutine.\n\
 ;\n\
 define ASCII_0      $30	    ; Value for ASCII 0 in hex\n\
-
 ; System variables\n\
 define sysLastKey   $ff\n\
 define current_char $12\n\
 define current_digit $13\n\
-
 readKeys:\n\
 	lda sysLastKey\n\
 	sta current_char\n\
@@ -355,7 +339,6 @@ readKeys:\n\
 	sta current_digit\n\
 	jsr drawInitials\n\
 	jmp readKeys\n\
-
 drawInitials:\n\
 	; Left most vertical bar\n\
 	STA $0264\n\
@@ -368,34 +351,29 @@ drawInitials:\n\
 	STA $0344\n\
 	STA $0364\n\
 	STA $0384\n\
-
 	; Top Horizontal Section\n\
 	STA $0265\n\
 	STA $0266\n\
 	STA $0267\n\
 	STA $0268\n\
-
 	; Right vertical bar\n\
 	STA $0289\n\
 	STA $02A9\n\
 	STA $02C9\n\
 	STA $02E9\n\
-
 	; Bottom Horizontal Section\n\
 	STA $0308\n\
 	STA $0307\n\
 	STA $0306\n\
 	STA $0305\n\
-
 	; Tail\n\
 	STA $0326\n\
 	STA $0347\n\
 	STA $0368\n\
 	STA $0389\n\
-
-	rts\n\
+rts\n\
 	
     
-"
+";
     
 }
