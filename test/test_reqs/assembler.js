@@ -19,13 +19,14 @@ function SimulatorWidget(node) {
   var labels = Labels();
   var simulator = Simulator();
   var assembler = Assembler();
+  var ourCode = OurCode();
 
   function initialize() {
     stripText();
     ui.initialize();
     display.initialize();
     simulator.reset();
-
+    
     $node.find('.assembleButton').click(function () {
       assembler.assembleCode();
     });
@@ -52,7 +53,12 @@ function SimulatorWidget(node) {
     $node.find('.stepButton').click(simulator.debugExec);
     $node.find('.gotoButton').click(simulator.gotoAddr);
     $node.find('.notesButton').click(ui.showNotes);
-
+    $node.find('.displayStackButton').click(ourCode.displayStackButton);
+    $node.find('.displayRegistersButton').click(ourCode.displayRegistersButton);
+    $node.find('.displayHexdumpButton').click(ourCode.displayHexdumpButton);
+    $node.find('.displayDisassembleButton').click(ourCode.displayDisassembleButton);
+      
+      
     var editor = $node.find('.code');
 
     editor.on('keypress input', simulator.stop);
@@ -306,6 +312,27 @@ function SimulatorWidget(node) {
     var debug = false;
     var monitoring = false;
     var executeId;
+      
+          
+    function getX(){
+        return regX;
+    }
+      
+    function getY(){
+        return regY;
+    }
+      
+    function getA(){
+        return regA;
+    }
+      
+    function getSP(){
+        return regSP;
+    }
+      
+    function getPC(){
+        return regPC;
+    }
 
     // Set zero and negative processor flags based on result
     function setNVflags(value) {
@@ -1710,7 +1737,12 @@ function SimulatorWidget(node) {
       reset: reset,
       stop: stop,
       toggleMonitor: toggleMonitor,
-      handleMonitorRangeChange: handleMonitorRangeChange
+      handleMonitorRangeChange: handleMonitorRangeChange,
+      getX: getX,
+      getY: getY,
+      getA: getA,
+      getSP: getSP,
+      getPC: getPC
     };
   }
 
@@ -2618,6 +2650,10 @@ function SimulatorWidget(node) {
       html += instructions.join('\n');
       openPopup(html, 'Disassembly');
     }
+    
+    function getCodeLen() {
+      return codeLen;
+    }
 
     return {
       assembleLine: assembleLine,
@@ -2626,7 +2662,8 @@ function SimulatorWidget(node) {
         return defaultCodePC;
       },
       hexdump: hexdump,
-      disassemble: disassemble
+      disassemble: disassemble,
+      getCodeLen: getCodeLen
     };
   }
 
@@ -2648,8 +2685,49 @@ function SimulatorWidget(node) {
       text += '\n'; // allow putc operations from the simulator (WDM opcode)
     $node.find('.messages code').append(text).scrollTop(10000);
   }
+    
+    initialize();
+    
+  function OurCode(){
+      function displayStackButton(){
+        var stack = [];
+        var length = $node.find('.length').val();
+        length = parseInt("0x" + length);
+        //store in array stack
+        for (var i=0x01ff; i>(0x01ff - length); i--){
+            console.log(num2hex(memory.get(i)));
+        }
+        //console.log(num2hex(memory.get(0x01ff)));
+        //write to console
+        for (var i; i<stack.length; i++){
+            conosle.log(i);
+        }
+      }
+      function displayRegistersButton(){
+          var x = simulator.getX();
+          var y = simulator.getY();
+          var a = simulator.getA();
+          var sp = simulator.getSP();
+          var pc = simulator.getPC();
+          
+          console.log(x);
+      }
+      function displayHexdumpButton(){
+          var dump = memory.format(0x600, assembler.getCodeLen());
+          console.log(dump)
+      }
+      function displayDisassembleButton(){
+          
+      }
+    return {
+      displayStackButton: displayStackButton,
+      displayRegistersButton: displayRegistersButton,
+      displayHexdumpButton: displayHexdumpButton,
+      displayDisassembleButton: displayDisassembleButton
+    };
+      
+  }
 
-  initialize();
 }
 
 $(document).ready(function () {
