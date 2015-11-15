@@ -9,6 +9,8 @@ section.code {
 
 		.file-name {
 			color: $color-gallery;
+			font-family: $title-font;
+			font-weight: 300;
 			font-size: em(16px);
 			text-align: center;
 			line-height: 75px;

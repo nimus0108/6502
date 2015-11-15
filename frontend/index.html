@@ -25,6 +25,10 @@
 -->
 		<!-- Styles -->
         <link href="ss/main.css" rel="stylesheet">
+
+        <!-- TYPEKIT -->
+        <script src="https://use.typekit.net/eij1hag.js"></script>
+		<script>try{Typekit.load({ async: true });}catch(e){}</script>
 	</head>
 	<body>
 		<div class="full-container widget">
@@ -106,7 +110,8 @@
                     <p style="text-align:center">ADC</p>
                     <p style="text-align:center">AND</p>
                     <p style="text-align:center">ASL</p>
-                    <span style="display: block; height: 62px;"></span>
+                    <br>
+                    <!-- <span style="display: block; height: 62px;"></span> -->
                     <p style="text-align:center">BCC</p>
                     <p style="text-align:center">BCS</p>
                     <p style="text-align:center">BEQ</p>
@@ -249,7 +254,7 @@
 			<section class="display panel" id="widgets">
 			    <div class="widget">
                   	<div class="top-square">
-			            <div class="half">
+			            <div class="half" style="z-index: 2;">
 			                <canvas class="screen" width="274" height="274"></canvas>
 							<div class="registers">
 								<div class="frame" id="register-a">
@@ -401,26 +406,25 @@
 								<label for="length">Length of Stack</label>
 								<input type="text" value="$20" class="length" name="length">
 							</div>
+						<br><br><br>
 						</div>
 						<!--- halves close -->
+						<div class="buttons action-button-container">
+							<input class="button-offset"></input>
+							<!-- <input type="button" value="Stack" class="displayStackButton"> <!-- Print stack to Console --> 
+							<input type="button" value="Hexdump" class="displayHexdumpButton" onclick="showConsole();"> <!-- Print hexdump to Console -->
+							<!-- <input type="button" value="Registers" class="displayRegistersButton"> <!-- Print registers to Console --> 
+							<input type="button" value="Disassemble" class="displayDisassembleButton" onclick="showConsole();"> <!-- Print diassembled program to console -->
+							<input class="button-offset"></input>
+		                </div>
+						<center>
+		                	<button onclick="showDocumentation()" style="width: 345px;">Read the Documentation</button>
+						</center>
 
 					</div>
-					<div class="buttons action-button-container">
-						<input class="button-offset"></input>
-						<!-- <input type="button" value="Stack" class="displayStackButton"> <!-- Print stack to Console --> 
-						<input type="button" value="Hexdump" class="displayHexdumpButton" onclick="showConsole();"> <!-- Print hexdump to Console -->
-						<!-- <input type="button" value="Registers" class="displayRegistersButton"> <!-- Print registers to Console --> 
-						<input type="button" value="Disassemble" class="displayDisassembleButton" onclick="showConsole();"> <!-- Print diassembled program to console -->
-						<input class="button-offset"></input>
 
-		                <div class="documentation-buttons" onclick="showDocumentation()">
-		                	<h3>Need help with 6502?</h3>
-		                	<button>Read the Documentation</button>
-		                </div>
-	                </div>
-
-                  <div class="monitor"><pre><code></code></pre></div>
-                  <div class="messages"><pre><code></code></pre></div>
+                  <!-- <div class="monitor"><pre><code></code></pre></div>
+                  <div class="messages"><pre><code></code></pre></div> -->
             </div>
 		</section>
 		<script type="text/javascript" src="js/jquery.min.js"></script>

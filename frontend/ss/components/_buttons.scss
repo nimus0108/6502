@@ -5,6 +5,8 @@ button, .button {
 	padding: 12px 12px;
 	background: rgba(255, 255, 255, 0.10);
 	color: $color-white;
+	font-family: $title-font;
+	font-weight: 300;
 	border: none;
 	border-radius: 0px;
 	outline: none;
