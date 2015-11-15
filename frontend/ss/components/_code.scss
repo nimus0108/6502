@@ -23,13 +23,6 @@ section.code {
 		}
 	}
 
-	div.code-data {
-		width: 100%;
-		height: calc(100% - 75px) !important;
-		font-size: em(18px);
-		line-height: 1.8;
-	}
-
 	.CodeMirror-line {
 		margin-left: 20px;
 	}
@@ -40,7 +33,9 @@ section.code {
 
 	div.code-data {
 		width: 100%;
-		height: calc(100% - 75px) !important;
+		height: calc(100% - 75px);
+		font-size: em(18px);
+		line-height: 1.8;
 		overflow-y: scroll;
 
 		-webkit-box-shadow: inset 5px 0px 10px 0px rgba(0,0,0,0.33), inset -5px 0px 10px 0px rgba(0,0,0,0.33);
