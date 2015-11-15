@@ -53,13 +53,13 @@ section.code {
 				.lineno {
 					padding-right: 0.1em;
 					font-size: em(15px);
-					// line-height: 2;
+					line-height: 2 !important;
 				}
 			}
 		}
 
 		.lines {
-			@include span-columns(1);
+			width: 66px !important;
 			min-height: calc(100% - 75px);
 			list-style: none;
 			color: $color-boulder;
@@ -67,13 +67,13 @@ section.code {
 			padding: 0px 15px 0 0;
 			background-color: rgba(255, 255, 255, 0.05);
 			text-align: right;
-			border-right: none;
+			border-right: 17px solid $color-outerspace;
 		}
 	}
 
 	div.code-text {
-		@include span-columns(13);
-		height: 100%;
+		@include span-columns(14);
+		height: calc(100% - 50px);
 		margin: 0;
 		padding: 0;
 		// padding: 20px 0 0 15px;
@@ -87,7 +87,7 @@ section.code {
 			height: 100%;
 			background: none;
 			color: $color-gallery;
-			line-height: 1;
+			line-height: 2 !important;
 			border: none;
 			outline: none;
 			text-align: left;
