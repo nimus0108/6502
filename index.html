@@ -34,6 +34,7 @@
     $("#logged-out").toggle(!isLoggedIn);
 
     if (isLoggedIn) {
+        console.log("http://6502.azurewebsites.net/frontend/index?id=" + client.currentUser.userId);
         window.location.replace = ("http://6502.azurewebsites.net/frontend/index?id=" + client.currentUser.userId);
     }
 }
