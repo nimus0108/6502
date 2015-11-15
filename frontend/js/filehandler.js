@@ -371,9 +371,6 @@ drawInitials:\n\
 	STA $0347\n\
 	STA $0368\n\
 	STA $0389\n\
-rts\n\
-	
-    
-";
+rts\n";
     
 }
