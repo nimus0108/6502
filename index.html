@@ -50,6 +50,7 @@
 
     if (isLoggedIn) {
         if (storageAvailable('localStorage')) {
+           
 	       localStorage.setItem('id', client.currentUser.clientId.replace("Google:",""));
            window.location.href = ("http://6502.azurewebsites.net/frontend/index.html");
         }
