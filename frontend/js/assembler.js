@@ -28,7 +28,6 @@ function SimulatorWidget(node) {
     simulator.reset();
     
     $node.find('.assembleButton').click(function () {
-        simulator.runBinary();
         assembler.assembleCode();
     });
     $node.find('.runButton').click(simulator.runBinary);
@@ -145,10 +144,14 @@ function SimulatorWidget(node) {
 
     function play() {
       setState(running);
+         ourCode.displayStackButton();
+        ourCode.displayRegistersButton();
     }
 
     function stop() {
       setState(assembled);
+         ourCode.displayStackButton();
+        ourCode.displayRegistersButton();
     }
 
     function debugOn() {
@@ -1560,7 +1563,6 @@ function SimulatorWidget(node) {
 
     // Executes the assembled code
     function runBinary() {
-        console.log("run");
       if (codeRunning) {
         // Switch OFF everything
         stop();
@@ -1987,11 +1989,15 @@ function SimulatorWidget(node) {
         ui.initialize();
         return false;
       }
-
+        
+        ourCode.displayStackButton();
+        ourCode.displayRegistersButton();
+        
+        
       message("Code assembled successfully, " + codeLen + " bytes.");
       return true;
     }
-
+      
     // Sanitize input: remove comments and trim leading/trailing whitespace
     function sanitize(line) {
       // remove comments
