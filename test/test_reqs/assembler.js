@@ -19,13 +19,14 @@ function SimulatorWidget(node) {
   var labels = Labels();
   var simulator = Simulator();
   var assembler = Assembler();
+  var ourCode = OurCode();
 
   function initialize() {
     stripText();
     ui.initialize();
     display.initialize();
     simulator.reset();
-
+    
     $node.find('.assembleButton').click(function () {
       assembler.assembleCode();
     });
@@ -52,7 +53,10 @@ function SimulatorWidget(node) {
     $node.find('.stepButton').click(simulator.debugExec);
     $node.find('.gotoButton').click(simulator.gotoAddr);
     $node.find('.notesButton').click(ui.showNotes);
-
+    $node.find('.displayStackButton').click(ourCode.displayStackButton);
+    $node.find('.displayRegistersButton').click(ourCode.displayRegistersButton);
+      
+      
     var editor = $node.find('.code');
 
     editor.on('keypress input', simulator.stop);
@@ -306,6 +310,15 @@ function SimulatorWidget(node) {
     var debug = false;
     var monitoring = false;
     var executeId;
+      
+          
+    function getX(){
+        return regX;
+    }
+      
+    function getY(){
+        return regY;
+    }
 
     // Set zero and negative processor flags based on result
     function setNVflags(value) {
@@ -1710,7 +1723,9 @@ function SimulatorWidget(node) {
       reset: reset,
       stop: stop,
       toggleMonitor: toggleMonitor,
-      handleMonitorRangeChange: handleMonitorRangeChange
+      handleMonitorRangeChange: handleMonitorRangeChange,
+      getX: getX,
+      getY: getY
     };
   }
 
@@ -2648,8 +2663,42 @@ function SimulatorWidget(node) {
       text += '\n'; // allow putc operations from the simulator (WDM opcode)
     $node.find('.messages code').append(text).scrollTop(10000);
   }
+    
+    initialize();
+    
+  function OurCode(){
+      function displayStackButton(){
+        var stack = [];
+        var length = $node.find('.length').val();
+        length = parseInt("0x" + length);
+        //store in array stack
+        for (var i=0x01ff; i>(0x01ff - length); i--){
+            console.log(num2hex(memory.get(i)));
+        }
+        //console.log(num2hex(memory.get(0x01ff)));
+        //write to console
+        for (var i; i<stack.length; i++){
+            conosle.log(i);
+        }
+      }
+      function displayRegistersButton(){
+          console.log(simulator.getX());
+      }
+      function displayHexdumpButton(){
+          
+      }
+      function displayDisassembleButton(){
+          
+      }
+    return {
+      displayStackButton: displayStackButton,
+      displayRegistersButton: displayRegistersButton,
+      displayHexdumpButton: displayHexdumpButton,
+      displayDisassembleButton: displayDisassembleButton
+    };
+      
+  }
 
-  initialize();
 }
 
 $(document).ready(function () {
