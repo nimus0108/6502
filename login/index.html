@@ -1,0 +1,18 @@
+<html>
+	<head>
+		<title>Login</title>
+	</head>
+	<body>
+		<button id="login">Login</button>
+		
+		
+		<script src="../js/jquery.min.js"></script>
+		<script>
+			$("#login").click(function {
+				$.get("https://github.com/login/oauth/authorize?client_id=a18049664528091188da&scope=user:email", function(data, status){
+					alert("Data: " + data + "\nStatus: " + status);
+				});
+			});
+		</script>
+	</body>
+</html>
