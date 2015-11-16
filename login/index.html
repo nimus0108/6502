@@ -1,0 +1,25 @@
+<html>
+	<head>
+		<title>Login</title>
+	</head>
+	
+	<body>
+		<button onclick="github()">Login</button>
+		
+		
+		<script src="../bower_components/oauth-js/dist/oauth.js"></script>
+		<script>
+			OAuth.initialize('OE9ukxS-R_E9spNPMIiP6KUyE8w');
+			function github() {
+				OAuth.popup('github')
+				.done(function(result) {
+				//use result.access_token in your API request 
+				//or use result.get|post|put|del|patch|me methods (see below)
+				})
+				.fail(function (err) {
+				//handle error with err
+				});
+			}
+		</script>
+	</body>
+</html>

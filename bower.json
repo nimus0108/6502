@@ -1,0 +1,38 @@
+{
+  "name": "6502 IDE",
+  "homepage": "https://github.com/nimus0108/6502",
+  "authors": [
+    "Liam Rahav <liam.rahav@gmail.com>",
+    "Jay Mo <jayhxmo@gmail.com>",
+    "Su Min Kim <nimus0108@gmail.com>"
+  ],
+  "description": "A simple and powerful 6502 Assembly IDE on the web",
+  "main": "",
+  "moduleType": [],
+  "keywords": [
+    "6502",
+    "Assembly",
+    "Processor",
+    "IDE",
+    "Compiler",
+    "Emulator",
+    "Web",
+    "Web",
+    "App",
+    "Open",
+    "Source",
+    "Hackathon"
+  ],
+  "license": "MIT",
+  "private": true,
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "oauth-js": "oauthio-web#~0.4.4"
+  }
+}
